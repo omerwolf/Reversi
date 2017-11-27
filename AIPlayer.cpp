@@ -1,0 +1,34 @@
+/***********************************************************************
+* id: 204380992											               *
+* Name : Yoel Jasner												   *
+***********************************************************************/
+#include "AIPlayer.h"
+#include <algorithm>
+using namespace std;
+
+AIPlayer::AIPlayer(symbol sym) : Player(sym) {
+    recursiveSuggestedTurn = 2;
+}
+
+
+AIPlayer::~AIPlayer()
+{
+}
+
+Cube AIPlayer::makeMove(vector <Move> allmoves) {
+    Move temp = *(allmoves.begin());
+    Cube cell;
+    for (vector <Move>::iterator iter = allmoves.begin(); iter != allmoves.end(); iter++) {
+        if ((*iter).grade >= temp.grade){
+            temp = *iter;
+            cell.x = temp.cell.x;
+            cell.y = temp.cell.y;
+            cell.value = name;
+        }
+    }
+    return cell;
+}
+
+bool AIPlayer::needMove() {
+    return false;
+}
