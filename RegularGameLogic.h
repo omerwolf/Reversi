@@ -10,7 +10,7 @@ class RegularGameLogic :public GameLogic{
 private:
     vector <Move> lowPossibleMoves(symbol sign);
     int gradeMove(symbol sign);
-    char getName(symbol sym);
+    char getSym(symbol sym);
     vector <Move> deepPossibleMoves(symbol sign);
     Move findMax(vector <Move> temp);
 public:

@@ -21,7 +21,7 @@ bool RegularGameLogic::isWin() {
     return false;
 }
 
-char RegularGameLogic::getName(symbol sym) {
+char RegularGameLogic::getSym(symbol sym) {
     if (sym == X)
         return 'X';
     else if (sym == O)
@@ -35,7 +35,7 @@ int RegularGameLogic::playTurn(Player *player) {
     if (temp.empty())
         return 0;
     else {
-        cout << getName(player->getName()) << ": it's your turn."<<endl;
+        cout << getSym(player->getName()) << ": it's your turn."<<endl;
         if (player->needMove())
             printMoves(player->getName());
         flip(player->getName(), player->makeMove(temp));
@@ -113,25 +113,58 @@ vector <Move> RegularGameLogic::deepPossibleMoves(symbol sign){
     vector <Move> deep, temp, low2;
     for (vector <Move> ::iterator iter = low.begin(); iter != low.end(); iter++) {
         if (sign == O) {
-            RegularGameLogic* tempBoard = new RegularGameLogic;
+            RegularGameLogic* tempBoard = new RegularGameLogic(board.getSize());
             tempBoard->board = this->board;
             tempBoard->flip(sign,iter->cell);
             low2 = tempBoard->lowPossibleMoves(X);
             for (vector <Move> ::iterator iter = low2.begin(); iter != low2.end(); iter++){
-                tempBoard->flip(X, (*iter).cell);
-                iter->grade = tempBoard->gradeMove(O);
+                RegularGameLogic* tempBoard2 = new RegularGameLogic(board.getSize());
+                tempBoard2->board = tempBoard->board;
+                tempBoard2->flip(X, (*iter).cell);
+                iter->grade = tempBoard2->gradeMove(X);
+                delete tempBoard2;
             }
+            if (low2.empty()){
+                iter->grade= tempBoard->countBoard(X);
+            }
+            else
+                iter->grade = findMax(low2).grade;
             delete tempBoard;
         }
-        temp.push_back(findMax(low2));
+        else if (sign == X){
+            RegularGameLogic* tempBoard = new RegularGameLogic(board.getSize());
+            tempBoard->board = this->board;
+            tempBoard->flip(sign,iter->cell);
+            low2 = tempBoard->lowPossibleMoves(O);
+            for (vector <Move> ::iterator iter = low2.begin(); iter != low2.end(); iter++){
+                RegularGameLogic* tempBoard2 = new RegularGameLogic(board.getSize());
+                tempBoard2->board = tempBoard->board;
+                tempBoard2->flip(O, (*iter).cell);
+                iter->grade = tempBoard2->gradeMove(O);
+                delete tempBoard2;
+            }
+            if (low2.empty()){
+                iter->grade= tempBoard->countBoard(O);
+            }
+            else
+                iter->grade = findMax(low2).grade;
+            delete tempBoard;
+        }
     }
+    return low;
 }
 
 Move RegularGameLogic::findMax(vector <Move> temp) {
-    Move move = *(temp.begin());
+    Move move;
+    move.cell.x = temp.begin()->cell.x;
+    move.cell.y = temp.begin()->cell.y;
+    move.grade = temp.begin()->grade;
     for (vector<Move>::iterator iter = temp.begin(); iter != temp.end(); iter++) {
         if (iter->grade >= move.grade){
-            move = *iter;
+            move.cell.x = iter->cell.x;
+            move.cell.y = iter->cell.y;
+            move.grade = iter->grade;
         }
     }
+    return move;
 }
