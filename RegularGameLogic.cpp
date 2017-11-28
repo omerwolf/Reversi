@@ -131,6 +131,25 @@ vector <Move> RegularGameLogic::deepPossibleMoves(symbol sign){
                 iter->grade = findMax(low2).grade;
             delete tempBoard;
         }
+        else if (sign == X){
+            RegularGameLogic* tempBoard = new RegularGameLogic(board.getSize());
+            tempBoard->board = this->board;
+            tempBoard->flip(sign,iter->cell);
+            low2 = tempBoard->lowPossibleMoves(O);
+            for (vector <Move> ::iterator iter = low2.begin(); iter != low2.end(); iter++){
+                RegularGameLogic* tempBoard2 = new RegularGameLogic(board.getSize());
+                tempBoard2->board = tempBoard->board;
+                tempBoard2->flip(O, (*iter).cell);
+                iter->grade = tempBoard2->gradeMove(O);
+                delete tempBoard2;
+            }
+            if (low2.empty()){
+                iter->grade= tempBoard->countBoard(O);
+            }
+            else
+                iter->grade = findMax(low2).grade;
+            delete tempBoard;
+        }
     }
     return low;
 }
