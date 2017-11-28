@@ -12,6 +12,8 @@ RegularGameManager::RegularGameManager(GameLogic* log) {
 }
 
 RegularGameManager::~RegularGameManager() {
+    delete OPlayer;
+    delete XPlayer;
 }
 
 void RegularGameManager::graphic() {

@@ -34,13 +34,12 @@ public:
     ***********************************************************************/
     Board(int size = 8);
     /***********************************************************************
-    * function name: Board (copy con's)                                    *
+    * function name: Board operator =(overloading)                         *
     * The input: const Board & (by refernce)  							   *
     * The Output: no Output										           *
     * The Function operation: copy the board.                              *
     ***********************************************************************/
-    Board (const Board& board);
-    Board operator= (const Board& board);
+    Board& operator= (const Board& board);
     /***********************************************************************
     * function name: getSize	                                           *
     * The input: no Input												   *
