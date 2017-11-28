@@ -10,7 +10,7 @@
 using namespace std;
 
 int main() {
-    GameLogic* logic = new RegularGameLogic(4);
+    GameLogic* logic = new RegularGameLogic(8);
     GameManager* GM = new RegularGameManager(logic);
     GM->start();
     delete logic;
