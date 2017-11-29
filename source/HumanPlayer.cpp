@@ -4,7 +4,7 @@
 ***********************************************************************/
 #include <limits>
 #include <iosfwd>
-#include "HumanPlayer.h"
+#include "../include/HumanPlayer.h"
 #include <iostream>
 using namespace std;
 

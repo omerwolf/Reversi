@@ -2,7 +2,7 @@
 * id: 204380992											               *
 * Name : Yoel Jasner												   *
 ***********************************************************************/
-#include "RegularGameManager.h"
+#include "../include/RegularGameManager.h"
 using namespace std;
 
 RegularGameManager::RegularGameManager(GameLogic* log) {

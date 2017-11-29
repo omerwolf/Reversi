@@ -10,7 +10,7 @@ typedef enum  { non, X, O } symbol;
 typedef struct Cube
 {
     int x, y;
-    symbol value = non;
+    symbol value;
 }Cube;
 
 class Board {

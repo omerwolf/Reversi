@@ -2,7 +2,7 @@
 * id: 204380992											               *
 * Name : Yoel Jasner												   *
 ***********************************************************************/
-#include "Player.h"
+#include "../include/Player.h"
 #include <iostream>
 using namespace std;
 

@@ -2,7 +2,7 @@
 * id: 204380992											               *
 * Name : Yoel Jasner												   *
 ***********************************************************************/
-#include "GameLogic.h"
+#include "../include/GameLogic.h"
 using namespace std;
 
 GameLogic::GameLogic(int size) : board(size) {

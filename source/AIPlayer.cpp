@@ -2,7 +2,7 @@
 * id: 204380992											               *
 * Name : Yoel Jasner												   *
 ***********************************************************************/
-#include "AIPlayer.h"
+#include "../include/AIPlayer.h"
 #include <algorithm>
 using namespace std;
 

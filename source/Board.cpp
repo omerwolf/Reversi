@@ -2,7 +2,7 @@
 * id: 204380992											               *
 * Name : Yoel Jasner												   *
 ***********************************************************************/
-#include "Board.h"
+#include "../include/Board.h"
 using namespace std;
 
 
@@ -80,7 +80,6 @@ void Board::setBoard(int i, int j, symbol value) {
 
 Board& Board::operator=(const Board &temp) {
     size = temp.getSize();
-    board = new Cube*[size];
     for (int i = 0; i < size; i++) {
         for (int j = 0; j < size; j++) {
             board[i][j].x = temp.board[i][j].x;

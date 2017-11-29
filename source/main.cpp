@@ -3,9 +3,9 @@
 * Name : Yoel Jasner												   *
 ***********************************************************************/
 #include <iostream>
-#include "GameManager.h"
-#include "RegularGameManager.h"
-#include "RegularGameLogic.h"
+#include "../include/GameManager.h"
+#include "../include/RegularGameManager.h"
+#include "../include/RegularGameLogic.h"
 
 using namespace std;
 

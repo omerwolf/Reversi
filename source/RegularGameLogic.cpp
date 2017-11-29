@@ -2,7 +2,7 @@
 * id: 204380992											               *
 * Name : Yoel Jasner												   *
 ***********************************************************************/
-#include "RegularGameLogic.h"
+#include "../include/RegularGameLogic.h"
 using namespace std;
 
 RegularGameLogic::RegularGameLogic(int size) : GameLogic(size){
