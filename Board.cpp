@@ -82,9 +82,6 @@ Board& Board::operator=(const Board &temp) {
     size = temp.getSize();
     board = new Cube*[size];
     for (int i = 0; i < size; i++) {
-        board[i] = new Cube[size];
-    }
-    for (int i = 0; i < size; i++) {
         for (int j = 0; j < size; j++) {
             board[i][j].x = temp.board[i][j].x;
             board[i][j].y = temp.board[i][j].y;
