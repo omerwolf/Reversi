@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(Ex3_final)
+project(Ex3)
 
 set(CMAKE_CXX_STANDARD 98)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -lpthread")
