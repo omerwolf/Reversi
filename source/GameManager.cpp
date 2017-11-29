@@ -1,6 +1,5 @@
 /***********************************************************************
-* id: 204380992											               *
-* Name : Yoel Jasner												   *
+* Name : Yoel Jasner & Omer Wolf									   *
 ***********************************************************************/
 #include "../include/GameManager.h"
 using namespace std;

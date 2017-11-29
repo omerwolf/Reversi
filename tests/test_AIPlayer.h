@@ -1,6 +1,8 @@
+/***********************************************************************
+* Name : Yoel Jasner & Omer Wolf									   *
+***********************************************************************/
 #ifndef EX3_TEST_AIPLAYER_H
 #define EX3_TEST_AIPLAYER_H
-
 #include "../include/AIPlayer.h"
 #include "../include/RegularGameLogic.h"
 #include <gtest/gtest.h>

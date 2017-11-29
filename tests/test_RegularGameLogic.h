@@ -1,25 +1,26 @@
 /***********************************************************************
 * Name : Yoel Jasner & Omer Wolf									   *
 ***********************************************************************/
-#ifndef EX3_TEST_HUMANPLAYER_H
-#define EX3_TEST_HUMANPLAYER_H
+#ifndef EX3_TEST_REGULARGAMELOGIC_H
+#define EX3_TEST_REGULARGAMELOGIC_H
 
-#include "../include/HumanPlayer.h"
 #include "../include/RegularGameLogic.h"
-#include <gtest/gtest.h>
+#include "../include/HumanPlayer.h"
+#include "gtest/gtest.h"
 
-class test_HumanPlayer: public testing::Test {
+class test_RegularGameLogic :public testing::Test{
 public:
     virtual void setUp(){
-        Xplayer, logic;
+        logic;
     }
     virtual void TearDown(){
-        delete Xplayer;
         delete logic;
+        delete playerX;
     }
 protected:
     RegularGameLogic* logic = new RegularGameLogic(8);
-    HumanPlayer* Xplayer = new HumanPlayer(X);
+    Player* playerX = new HumanPlayer(X);
 };
 
-#endif //EX3_TEST_HUMANPLAYER_H
+
+#endif //EX3_TEST_REGULARGAMELOGIC_H

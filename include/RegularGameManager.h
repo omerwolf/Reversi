@@ -1,7 +1,6 @@
-//
-// Created by yoel on 26/11/17.
-//
-
+/***********************************************************************
+* Name : Yoel Jasner & Omer Wolf									   *
+***********************************************************************/
 #ifndef EX3_FINAL_REGULARGAMEMANAGER_H
 #define EX3_FINAL_REGULARGAMEMANAGER_H
 #include "GameManager.h"

@@ -1,6 +1,5 @@
 /***********************************************************************
-* id: 204380992											               *
-* Name : Yoel Jasner												   *
+* Name : Yoel Jasner & Omer Wolf									   *
 ***********************************************************************/
 #ifndef EX3_FINAL_BOARD_H
 #define EX3_FINAL_BOARD_H
@@ -32,7 +31,7 @@ public:
     * The Output: no Output										           *
     * The Function operation: initialized the game board to the first move.*
     ***********************************************************************/
-    Board(int size = 8);
+    explicit Board(int size = 8);
     /***********************************************************************
     * function name: Board operator =(overloading)                         *
     * The input: const Board & (by refernce)  							   *

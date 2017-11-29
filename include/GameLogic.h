@@ -1,6 +1,5 @@
 /***********************************************************************
-* id: 204380992											               *
-* Name : Yoel Jasner												   *
+* Name : Yoel Jasner & Omer Wolf									   *
 ***********************************************************************/
 #ifndef EX3_FINAL_GAMELOGIC_H
 #define EX3_FINAL_GAMELOGIC_H
