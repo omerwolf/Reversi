@@ -4,6 +4,12 @@
 #ifndef EX3_FINAL_AIPLAYER_H
 #define EX3_FINAL_AIPLAYER_H
 #include "Player.h"
+
+/***********************************************************************
+* inheritance  from class Player and composition of the pure virtual
+* functions.                                                            *
+***********************************************************************/
+
 class AIPlayer :
         public Player
 {

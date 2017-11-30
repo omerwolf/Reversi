@@ -71,7 +71,7 @@ public:
     ***********************************************************************/
     symbol getBoard(int i, int j) { return board[i][j].value; };
     /***********************************************************************
-    * function name: Board (d'tor)                                          *
+    * function name: Board (d'tor)                                         *
     * The input: No input		 										   *
     * The Output: no Output										           *
     * The Function operation: delete the game board with a nested loop.    *

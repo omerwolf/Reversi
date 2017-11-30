@@ -6,6 +6,11 @@
 #include "Player.h"
 
 
+/***********************************************************************
+* inheritance  from class Player and composition of the pure virtual
+* functions.                                                            *
+***********************************************************************/
+
 class HumanPlayer :
         public Player
 {

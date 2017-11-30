@@ -67,7 +67,21 @@ public:
     on the board.														   *
     ***********************************************************************/
     virtual int getRecusreSuggestionTurn() { return recursiveSuggestedTurn; };
+    /***********************************************************************
+    * function name: needMove											   *
+    * The input: No Input		  										   *
+    * The Output: bool											           *
+    * The Function operation: return if the player wants that is possible
+    * move will be shown up.										       *
+    ***********************************************************************/
     virtual bool needMove()=0;
+    /***********************************************************************
+   * function name: makeMove											   *
+   * The input: vector <Move>		  									   *
+   * The Output: Cube											           *
+   * The Function operation: each player make is choosen move from is
+   * possible options.										               *
+   ***********************************************************************/
     virtual Cube makeMove(vector <Move> move) = 0;
 };
 
