@@ -8,7 +8,7 @@
 class Server {
 private:
     int port, serverSocket;
-    void handleClient(int clientSocket);
+    void handleClient(int clientSocket1, int clientSocket2);
 
 public:
     Server(int port);
