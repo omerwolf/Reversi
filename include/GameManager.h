@@ -7,6 +7,7 @@
 #include "Board.h"
 #include "HumanPlayer.h"
 #include "AIPlayer.h"
+#include "RemotePlayer.h"
 #include "GameLogic.h"
 #include <vector>
 

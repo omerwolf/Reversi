@@ -40,6 +40,7 @@ protected:
     * The Function operation: flip on the direction until the first cube
     * with the same symbol.                                                *
     ***********************************************************************/
+    virtual void flip(symbol sign, Cube cell);
     void flipDown(Cube& cell);
     void flipUp(Cube& cell);
     void flipRight(Cube& cell);
@@ -71,7 +72,6 @@ protected:
     * The Function operation: copy the vector to the right member of logic.*
     ***********************************************************************/
     virtual void setVector(vector<Move> temp, symbol sign);
-
 public:
     /***********************************************************************
     * function name: GameLogic (con's)                                     *

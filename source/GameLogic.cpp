@@ -67,6 +67,26 @@ void GameLogic::setVector(vector<Move> temp, symbol sign){
         OMoves =temp;
     }
 }
+void GameLogic::flip(symbol sign, Cube cell) {
+    cell.value = sign;
+    if (canReverseDown(cell.value, cell))
+        flipDown(cell);
+    if (canReverseUp(cell.value, cell))
+        flipUp(cell);
+    if (canReverseLeft(cell.value, cell))
+        flipLeft(cell);
+    if (canReverseRight(cell.value, cell))
+        flipRight(cell);
+    if (canReverseDownLeft(cell.value, cell))
+        flipDownLeft(cell);
+    if (canReverseDownRight(cell.value, cell))
+        flipDownRight(cell);
+    if (canReverseUpLeft(cell.value, cell))
+        flipUpLeft(cell);
+    if (canReverseUpRight(cell.value, cell))
+        flipUpRight(cell);
+    board.setBoard(cell.x, cell.y, cell.value);
+}
 
 void GameLogic::flipDown(Cube& cell) {
     int i = 1;

@@ -19,7 +19,6 @@ private:
     char getSym(symbol sym);
     vector <Move> deepPossibleMoves(symbol sign);
     Move findMax(vector <Move> temp);
-    void flip(symbol sign, Cube cell);
 public:
     explicit RegularGameLogic(int size = 8);
     ~RegularGameLogic();

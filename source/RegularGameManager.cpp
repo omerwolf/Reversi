@@ -25,12 +25,15 @@ Player* RegularGameManager::menu() {
         cout << "Choose Player:" << endl;
         cout << "   1.Human Player press 1" << endl;
         cout << "   2.AI Player press 2" << endl;
+        cout << "   3.Remote  Player press 3" << endl;
         cin >> input;
-        if (input == 1){
-            return(new HumanPlayer(O));
-        }
-        else if (input == 2){
-            return(new AIPlayer(O));
+        switch (input) {
+            case 1:
+                return (new HumanPlayer(O));
+            case 2:
+                return (new AIPlayer(O));
+            case 3:
+                return (new RemotePlayer(O, 8, logic));
         }
     } while(true);
 }
