@@ -48,7 +48,7 @@ void Server::start() {
         if (clientSocket2 == -1) {
             throw "Error on accept socket2";
         }
-            handleClient(clientSocket1, clientSocket2);
+        handleClient(clientSocket1, clientSocket2);
         close(clientSocket1);
         close(clientSocket2);
 
@@ -74,7 +74,7 @@ void Server::handleClient(int clientSocket1, int clientSocket2) {
         }
 
         //Player2 move
-        int n = read(clientSocket2, &buffer, sizeof(buffer));
+        n = read(clientSocket2, &buffer, sizeof(buffer));
         if (n == -1) {
             cout << "Error reading the client 2 move" << endl;
             return;
