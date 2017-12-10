@@ -4,15 +4,17 @@
 #ifndef EX3_REMOTEPLAYER_H
 #define EX3_REMOTEPLAYER_H
 #include "Player.h"
-#include "GameLogic.h"
+#include "ServerConnector.h"
+#include "string.h"
 
-class RemotePlayer : public Player{
+class RemotePlayerReciver : public Player{
 private:
-    GameLogic* logic;
+    ServerConnector* connector;
 public:
-    RemotePlayer (symbol name, int size, GameLogic* receivingLogic);
-    ~RemotePlayer();
-    void moveOpponent(Cube cell);
+    RemotePlayerReciver (symbol name, ServerConnector* connector);
+    ~RemotePlayerReciver();
+    bool needMove() {return true;};
+    Cube makeMove(vector <Move> temp) {};
 };
 
 

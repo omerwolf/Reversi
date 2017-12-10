@@ -2,11 +2,13 @@
 * Name : Yoel Jasner & Omer Wolf									   *
 ***********************************************************************/
 #include <iostream>
+#include <limits>
+#include <iosfwd>
 #include "../include/GameManager.h"
 #include "../include/RegularGameManager.h"
 #include "../include/RegularGameLogic.h"
-
 using namespace std;
+
 
 int main() {
     GameLogic* logic = new RegularGameLogic(8);

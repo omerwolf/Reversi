@@ -4,7 +4,6 @@
 #ifndef EX3_FINAL_REGULARGAMEMANAGER_H
 #define EX3_FINAL_REGULARGAMEMANAGER_H
 #include "GameManager.h"
-
 /***********************************************************************
 * inheritance  from class GameManager and composition of the pure virtual
 * functions. regular game between to player given the option to choose
@@ -12,11 +11,12 @@
 ***********************************************************************/
 
 class RegularGameManager : public GameManager {
+private:
+    int menu();
 public:
     explicit RegularGameManager(GameLogic* log);
     ~RegularGameManager();
     void graphic();
-    Player* menu();
     void start();
 };
 
