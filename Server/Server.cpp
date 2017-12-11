@@ -9,7 +9,8 @@
 #include <iostream>
 #include <stdio.h>
 using namespace std;
-#define NUMOFPLAYER 3
+#define NUMOFPLAYER 2
+#define MAXSIZE 10
 
 
 Server::Server(int port): port(port), serverSocket(0){
@@ -19,6 +20,7 @@ Server::Server(int port): port(port), serverSocket(0){
 void Server::start() {
     serverSocket = socket(AF_INET, SOCK_STREAM, 0);
     if (serverSocket == -1) {
+        close(serverSocket);
         throw "Error opening socket";
     }
     struct sockaddr_in serverAddress;
@@ -27,27 +29,31 @@ void Server::start() {
     serverAddress.sin_addr.s_addr = INADDR_ANY;
     serverAddress.sin_port = htons(port);
     if (bind(serverSocket, (struct sockaddr *) &serverAddress, sizeof(serverAddress)) == -1) {
+        close(serverSocket);
         throw "Error on binding";
     }
     // Start to listening to incoming connections
-    listen(serverSocket, NUMOFPLAYER);
+    if (listen(serverSocket, NUMOFPLAYER) <0){
+        close(serverSocket);
+        throw "Error on listening";
+    };
     // Define the client socket's structures
-    struct sockaddr_in clientAddress;
-    socklen_t clientAdderssLen;
-
+    struct sockaddr_in clientAddress1, clientAddress2;
+    socklen_t clientAdderssLen1, clientAdderssLen2;
     while (true) {
         cout << "Waiting for client connections..." << endl;
         // Accept a new client connection
-        int clientSocket1 = accept(serverSocket, (struct sockaddr *) &clientAddress, &clientAdderssLen);
-        cout << "Client 1 connected" << endl;
-        int clientSocket2 = accept(serverSocket, (struct sockaddr *) &clientAddress, &clientAdderssLen);
-        cout << "Client 2 connected" << endl;
+        int clientSocket1 = accept(serverSocket, (struct sockaddr *) &clientAddress1, &clientAdderssLen1);
         if (clientSocket1 == -1) {
             throw "Error on accept socket1";
         }
+        cout << "Client 1 connected" << endl;
+        int clientSocket2 = accept(serverSocket, (struct sockaddr *) &clientAddress2, &clientAdderssLen2);
         if (clientSocket2 == -1) {
             throw "Error on accept socket2";
         }
+        cout << "Client 2 connected" << endl;
+
         handleClient(clientSocket1, clientSocket2);
         close(clientSocket1);
         close(clientSocket2);
@@ -55,10 +61,24 @@ void Server::start() {
     }
 }
 void Server::handleClient(int clientSocket1, int clientSocket2) {
-    char buffer[2];
+    char buffer[MAXSIZE];
+    const char* init = "1";
+    const char* init2 = "2";
+    //write color to player1
+    int check = write(clientSocket1, &init, strlen(init));
+    if (check == -1){
+        cout << "Error writing to socket1" << endl;
+        return;
+    }
+    //write color to player2
+    check = write(clientSocket2, &init2, strlen(init2));
+    if (check == -1){
+        cout << "Error writing to socket2" << endl;
+        return;
+    }
     while (true) {
         //Player1 move
-        int n = read(clientSocket1, &buffer, sizeof(buffer));
+        int n = read(clientSocket1, &buffer, strlen(buffer));
         if (n == -1) {
             cout << "Error reading the client 1 move" << endl;
             return;
@@ -67,9 +87,9 @@ void Server::handleClient(int clientSocket1, int clientSocket2) {
             cout << "Client 1 disconnected" << endl;
             return;
         }
-        n = write(clientSocket1, &buffer, sizeof(buffer));
+        n = write(clientSocket2, &buffer, strlen(buffer));
         if (n == -1) {
-            cout << "Error writing to socket" << endl;
+            cout << "Error writing to socket2" << endl;
             return;
         }
 
@@ -83,9 +103,9 @@ void Server::handleClient(int clientSocket1, int clientSocket2) {
             cout << "Client 2 disconnected" << endl;
             return;
         }
-        n = write(clientSocket2, &buffer, sizeof(buffer));
+        n = write(clientSocket1, &buffer, sizeof(buffer));
         if (n == -1) {
-            cout << "Error writing to socket" << endl;
+            cout << "Error writing to socket1" << endl;
             return;
         }
     }

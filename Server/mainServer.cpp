@@ -19,10 +19,10 @@ int main() {
         cout << "Unable to open the server/ip file" << endl;
     }
     Server server(port);
-        try {
-            server.start();
-        } catch (const char *msg) {
-            cout << "Cannot start server. Reason: " << msg << endl;
-            exit(-1);
-        }
+    try {
+        server.start();
+    } catch (const char *msg) {
+        cout << "Cannot start server. Reason: " << msg << endl;
+        exit(-1);
     }
+}
