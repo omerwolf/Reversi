@@ -21,7 +21,7 @@ Cube RemotePlayerSender::makeMove(vector<Move> move)  {
         stringstream str;
         str << cell.x << ", " << cell.y;
         string temp = str.str();
-        const char* strTemp = temp.c_str();
-        connector->sendMove(strTemp);
+        connector->sendMove(temp.c_str());
     }
+    return cell;
 }

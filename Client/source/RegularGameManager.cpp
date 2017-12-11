@@ -3,11 +3,17 @@
 ***********************************************************************/
 #include "../include/RegularGameManager.h"
 #include "limits"
+#include "stdlib.h"
 using namespace std;
 
 RegularGameManager::RegularGameManager(GameLogic* log) {
     logic = log;
-    menu();
+    try {
+        menu();
+    } catch (const char *msg) {
+        cout <<  msg << endl;
+        this->~RegularGameManager();
+    }
 }
 
 int RegularGameManager::menu() {
@@ -17,7 +23,7 @@ int RegularGameManager::menu() {
             cout << "Choose Player:" << endl;
             cout << "   1.Human Player press 1" << endl;
             cout << "   2.AI Player press 2" << endl;
-            cout << "   3.Remote  Player press 3" << endl;
+            cout << "   3.Remote Player press 3" << endl;
             cin >> input;
             if (!cin.fail()) {
                 cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); //skip bad input
@@ -40,7 +46,6 @@ int RegularGameManager::menu() {
                 return 0;
             case 3:
                 connector->connectToServer();
-                cout << "connected to server" <<endl;
                 cout << "waiting for other player to join" << endl;
                 str = connector->getMove();
                 if (!strcmp(str,"1")){

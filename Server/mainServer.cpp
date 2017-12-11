@@ -3,7 +3,7 @@
 ***********************************************************************/
 
 #include "Server.h"
-#include <iostream>
+#include <cstring>
 #include <stdlib.h>
 #include <fstream>
 using namespace std;
@@ -12,7 +12,7 @@ using namespace std;
 int main() {
     ifstream myInfo;
     int port;
-    myInfo.open("myInfo");
+    myInfo.open("Server/port_ip.txt");
     if (myInfo.is_open()) {
         myInfo >> port;
     } else {

@@ -62,23 +62,23 @@ void Server::start() {
 }
 void Server::handleClient(int clientSocket1, int clientSocket2) {
     char buffer[MAXSIZE];
-    const char* init = "1";
-    const char* init2 = "2";
+    string init = "1";
+    string init2 = "2";
     //write color to player1
-    int check = write(clientSocket1, &init, strlen(init));
+    int check = write(clientSocket1, init.c_str(), sizeof(init));
     if (check == -1){
         cout << "Error writing to socket1" << endl;
         return;
     }
     //write color to player2
-    check = write(clientSocket2, &init2, strlen(init2));
+    check = write(clientSocket2, init2.c_str(), sizeof(init2));
     if (check == -1){
         cout << "Error writing to socket2" << endl;
         return;
     }
     while (true) {
         //Player1 move
-        int n = read(clientSocket1, &buffer, strlen(buffer));
+        int n = read(clientSocket1, buffer, strlen(buffer)+1);
         if (n == -1) {
             cout << "Error reading the client 1 move" << endl;
             return;
@@ -87,14 +87,14 @@ void Server::handleClient(int clientSocket1, int clientSocket2) {
             cout << "Client 1 disconnected" << endl;
             return;
         }
-        n = write(clientSocket2, &buffer, strlen(buffer));
+        n = write(clientSocket2, buffer, strlen(buffer)+1);
         if (n == -1) {
             cout << "Error writing to socket2" << endl;
             return;
         }
 
         //Player2 move
-        n = read(clientSocket2, &buffer, sizeof(buffer));
+        n = read(clientSocket2, &buffer, strlen(buffer)+1);
         if (n == -1) {
             cout << "Error reading the client 2 move" << endl;
             return;

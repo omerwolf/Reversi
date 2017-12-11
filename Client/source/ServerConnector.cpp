@@ -10,10 +10,19 @@
 #include <netdb.h>
 #include <string.h>
 #include <unistd.h>
+#include <fstream>
 using namespace std;
 
-ServerConnector::ServerConnector() {
-
+ServerConnector::ServerConnector() :clientSocket(0){
+    ifstream myInfo;
+    myInfo.open("../Server/port_ip.txt");
+    if (myInfo.is_open()) {
+        myInfo >> serverPort;
+        myInfo >> serverIP;
+    }
+    else {
+        cout << "Error opening file" << endl;
+    }
 }
 
 ServerConnector::ServerConnector(const string &str, int serverPort) :
@@ -50,17 +59,22 @@ void ServerConnector::connectToServer() {
 }
 
 char* ServerConnector::getMove() {
-    char *temp = new char[MAXSIZE];
-    memset(temp, 0, MAXSIZE);
-    int n = read(clientSocket, &temp, strlen(temp));
+    char *temp;
+    char arr [MAXSIZE];
+    memset(arr, 0, MAXSIZE);
+    int n;
+    do {
+        n = read(clientSocket, arr, sizeof(arr));
+    } while(n == 0);
     if ( n == -1){
         throw "Error in reading data";
     }
+    temp = arr;
     return temp;
 }
 
 void ServerConnector::sendMove(const char* str) {
-    int n =write(clientSocket,&str, strlen(str));
+    int n =write(clientSocket, str, strlen(str)+1);
     if (n==-1){
         throw "Error writing expression";
     }

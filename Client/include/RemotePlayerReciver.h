@@ -13,8 +13,8 @@ private:
 public:
     RemotePlayerReciver (symbol name, ServerConnector* connector);
     ~RemotePlayerReciver();
-    bool needMove() {return true;};
-    Cube makeMove(vector <Move> temp) {};
+    bool needMove() {return false;};
+    Cube makeMove(vector <Move> temp);
 };
 
 
