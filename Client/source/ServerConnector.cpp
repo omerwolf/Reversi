@@ -59,17 +59,13 @@ void ServerConnector::connectToServer() {
 }
 
 char* ServerConnector::getMove() {
-    char *temp;
-    char arr [MAXSIZE];
-    memset(arr, 0, MAXSIZE);
-    int n;
-    do {
-        n = read(clientSocket, arr, sizeof(arr));
-    } while(n == 0);
+    char *temp = new char [MAXSIZE];
+    memset(temp, 0, MAXSIZE);
+    int n = read(clientSocket, temp, sizeof(temp));
+    cout << temp <<endl;
     if ( n == -1){
         throw "Error in reading data";
     }
-    temp = arr;
     return temp;
 }
 

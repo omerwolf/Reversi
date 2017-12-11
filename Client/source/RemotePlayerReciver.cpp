@@ -2,6 +2,7 @@
 * Name : Yoel Jasner & Omer Wolf									   *
 ***********************************************************************/
 #include "../include/RemotePlayerReciver.h"
+#include "stdlib.h"
 using namespace std;
 
 RemotePlayerReciver::RemotePlayerReciver(symbol name,ServerConnector * connector) :
@@ -29,8 +30,11 @@ Cube RemotePlayerReciver::makeMove(vector<Move> temp) {
         return cell;
     }
     else {
-        cell.x = ptr[0];
-        cell.y = ptr[3];
+        char temp[2] = "";
+        temp[0] = ptr[0];
+        cell.x = atoi(temp);
+        temp[0] = ptr[3];
+        cell.y = atoi(temp);
         cell.value = non;
         return cell;
     }
