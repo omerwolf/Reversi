@@ -7,7 +7,7 @@
 #include <stdlib.h>
 using namespace std;
 
-int main() {
+int mainServer() {
     Server server(8000);
     try {
         server.start();
