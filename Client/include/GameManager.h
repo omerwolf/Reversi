@@ -7,7 +7,9 @@
 #include "Board.h"
 #include "HumanPlayer.h"
 #include "AIPlayer.h"
-#include "RemotePlayer.h"
+#include "RemotePlayerReciver.h"
+#include "RemotePlayerSender.h"
+#include "ServerConnector.h"
 #include "GameLogic.h"
 #include <vector>
 
@@ -38,13 +40,6 @@ public:
     * given the composition choosen.                                       *
     ***********************************************************************/
     virtual void graphic() = 0;
-    /***********************************************************************
-    * function name: menu                                                  *
-    * The input: No Input         										   *
-    * The Output: no Output										           *
-    * The Function operation: with who you want to play (AI/human)         *
-    ***********************************************************************/
-    virtual Player* menu()= 0;
     /***********************************************************************
     * function name: isWinGame                                             *
     * The input: No Input         										   *

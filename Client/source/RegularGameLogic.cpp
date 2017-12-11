@@ -29,17 +29,20 @@ char RegularGameLogic::getSym(symbol sym) {
 }
 
 int RegularGameLogic::playTurn(Player *player) {
+    Cube cell;
     vector <Move> temp = possibleMoves(player);
     setVector(temp, player->getName());
-    if (temp.empty())
-        return 0;
-    else {
-        cout << getSym(player->getName()) << ": it's your turn."<<endl;
-        if (player->needMove())
-            printMoves(player->getName());
-        flip(player->getName(), player->makeMove(temp));
-        return 1;
+    cout << getSym(player->getName()) << ": it's your turn."<<endl;
+    if (player->needMove())
+        printMoves(player->getName());
+    cell = player->makeMove(temp);
+    if (cell.x == -1 && cell.y == -1) {
+        cout << getSym(player->getName()) << "You have no legal Move." <<endl;
+        return -1;
     }
+    else
+        flip(player->getName(), cell);
+    return 1;
 }
 
 
