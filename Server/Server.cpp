@@ -55,7 +55,7 @@ void Server::start() {
     }
 }
 void Server::handleClient(int clientSocket1, int clientSocket2) {
-    char buffer[10];
+    char buffer[2];
     while (true) {
         //Player1 move
         int n = read(clientSocket1, &buffer, sizeof(buffer));

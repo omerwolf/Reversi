@@ -5,10 +5,19 @@
 #include "Server.h"
 #include <iostream>
 #include <stdlib.h>
+#include <fstream>
 using namespace std;
 
 int main() {
-    Server server(8000);
+    ifstream myInfo;
+    int port;
+    myInfo.open("myInfo");
+    if(myInfo.is_open()){
+        myInfo >> port;
+    }else {
+        cout<<"Unable to open the server/ip file"<<endl;
+    }
+    Server server(port);
     try {
         server.start();
     } catch  (const char *msg){
