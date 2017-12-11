@@ -19,8 +19,6 @@ int main() {
         cout << "Unable to open the server/ip file" << endl;
     }
     Server server(port);
-    int mainServer() {
-        Server server(8000);
         try {
             server.start();
         } catch (const char *msg) {
@@ -28,4 +26,3 @@ int main() {
             exit(-1);
         }
     }
-}
