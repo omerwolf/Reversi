@@ -52,60 +52,55 @@ void Server::start() {
             throw "Error on accept socket2";
         }
         cout << "Client 2 connected" << endl;
-
-        handleClient(clientSocket1, clientSocket2);
+        try {
+            handleClient(clientSocket1, clientSocket2);
+        } catch (const char* msg){
+            cout<< msg <<endl;
+        }
         close(clientSocket1);
         close(clientSocket2);
-
     }
 }
 void Server::handleClient(int clientSocket1, int clientSocket2) {
-    char buffer[MAXSIZE];
     char init = '1';
     char init2 = '2';
     //write color to player1
     int check = write(clientSocket1, &init, sizeof(init));
     if (check == -1){
-        cout << "Error writing to socket1" << endl;
-        return;
+        throw  "Error writing to socket1" ;
     }
     //write color to player2
     check = write(clientSocket2, &init2, sizeof(init2));
     if (check == -1){
-        cout << "Error writing to socket2" << endl;
-        return;
+        throw "Error writing to socket2" ;
     }
     while (true) {
+        char buffer[MAXSIZE];
         //Player1 move
-        int n = read(clientSocket1, buffer, strlen(buffer)+1);
+        int n = read(clientSocket1, buffer, sizeof(buffer));
         if (n == -1) {
-            cout << "Error reading the client 1 move" << endl;
-            return;
+            throw "Error reading the client 1 move" ;
+
         }
         if (n == 0) {
-            cout << "Client 1 disconnected" << endl;
-            return;
+            throw "Client 1 disconnected" ;
         }
         n = write(clientSocket2, &buffer, strlen(buffer)+1);
         if (n == -1) {
-            cout << "Error writing to socket2" << endl;
-            return;
+            throw "Error writing to socket2" ;
         }
-
+        char buff[MAXSIZE];
         //Player2 move
-        n = read(clientSocket2, buffer, strlen(buffer)+1);
+        n = read(clientSocket2, buff, sizeof(buff));
         if (n == -1) {
-            cout << "Error reading the client 2 move" << endl;
-            return;
+            throw "Error reading the client 2 move" ;
         }
         if (n == 0) {
-            cout << "Client 2 disconnected" << endl;
-            return;
+            throw "Client 2 disconnected" ;
         }
-        n = write(clientSocket1, &buffer, sizeof(buffer));
+        n = write(clientSocket1, &buff, strlen(buff)+1);
         if (n == -1) {
-            cout << "Error writing to socket1" << endl;
-            return;
+            throw "Error writing to socket1" ;
         }
     }
 

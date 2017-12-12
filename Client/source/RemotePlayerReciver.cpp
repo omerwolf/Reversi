@@ -11,7 +11,6 @@ RemotePlayerReciver::RemotePlayerReciver(symbol name,ServerConnector * connector
 }
 
 RemotePlayerReciver::~RemotePlayerReciver() {
-    delete connector;
 }
 
 Cube RemotePlayerReciver::makeMove(vector<Move> temp) {
