@@ -18,6 +18,7 @@ public:
     ~ServerConnector();
     void connectToServer();
     char* getMove();
+    char* getSign();
     void sendMove(const char* str);
 };
 

@@ -32,16 +32,19 @@ int RegularGameLogic::playTurn(Player *player) {
     Cube cell;
     vector <Move> temp = possibleMoves(player);
     setVector(temp, player->getName());
-    cout << getSym(player->getName()) << ": it's your turn."<<endl;
-    if (player->needMove())
+    if (player->needMove()) {
+        cout << getSym(player->getName()) << ": it's your turn." << endl;
         printMoves(player->getName());
+    }
     cell = player->makeMove(temp);
     if (cell.x == -1 && cell.y == -1) {
-        cout << getSym(player->getName()) << "You have no legal Move." <<endl;
+        cout << getSym(player->getName()) << " You have no legal Move." <<endl;
         return -1;
     }
-    else
+    else {
+        cout << getSym(player->getName()) << " Played " << "(" << cell.x+1 << "," << cell.y+1 << ")" <<endl;
         flip(player->getName(), cell);
+    }
     return 1;
 }
 

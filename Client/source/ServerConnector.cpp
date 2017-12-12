@@ -61,8 +61,8 @@ void ServerConnector::connectToServer() {
 char* ServerConnector::getMove() {
     char *temp = new char [MAXSIZE];
     memset(temp, 0, MAXSIZE);
+    cout << "waiting for other player's move... "<<endl;
     int n = read(clientSocket, temp, sizeof(temp));
-    cout << temp <<endl;
     if ( n == -1){
         throw "Error in reading data";
     }
@@ -74,4 +74,14 @@ void ServerConnector::sendMove(const char* str) {
     if (n==-1){
         throw "Error writing expression";
     }
+}
+
+char* ServerConnector::getSign() {
+    char *temp = new char [MAXSIZE];
+    memset(temp, 0, MAXSIZE);
+    int n = read(clientSocket, temp, sizeof(temp));
+    if ( n == -1){
+        throw "Error in reading data";
+    }
+    return temp;
 }

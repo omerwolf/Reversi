@@ -47,7 +47,7 @@ int RegularGameManager::menu() {
             case 3:
                 connector->connectToServer();
                 cout << "waiting for other player to join" << endl;
-                str = connector->getMove();
+                str = connector->getSign();
                 if (!strcmp(str,"1")){
                     OPlayer = new RemotePlayerReciver(O, connector);
                     XPlayer = new RemotePlayerSender(X, connector);

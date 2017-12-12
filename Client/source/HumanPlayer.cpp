@@ -28,7 +28,7 @@ Cube HumanPlayer::makeMove(vector <Move> allmoves) {
     }
     else {
         do {
-            cout << "Please enter your move row col (for example: 2 5)" << endl;
+            cout << "Please enter your move row col (for example: 2 5): ";
             while (true) {
                 cin >> cell.x >> cell.y;
                 if (!cin.fail()) {
