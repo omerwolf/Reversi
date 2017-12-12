@@ -1,8 +1,0 @@
-id: 204380992
-name: Yoel Jasner
-tirgul group: 05
-_________________
-
-id: 307965988
-name: Omer Wolf
-tirgul group: 05
