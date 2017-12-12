@@ -10,19 +10,20 @@ RemotePlayerReciver::RemotePlayerReciver(symbol name,ServerConnector * connector
     recursiveSuggestedTurn = 1;
 }
 
-RemotePlayerReciver::~RemotePlayerReciver() {
+RemotePlayerReciver::~RemotePlayerReciver() { // deleted when the game is over on
+                                              // behalf of the RemotePlayerSender
 }
 
 Cube RemotePlayerReciver::makeMove(vector<Move> temp) {
     char* ptr = connector->getMove();
     Cube cell;
-    if (!strcmp(ptr, "NO MOVE")){
+    if (!strcmp(ptr, "NO MOVE")){ //special flag
         cell.x = -1;
         cell.y = -1;
         cell.value = non;
         return cell;
     }
-    else if (!strcmp(ptr, "END")) {
+    else if (!strcmp(ptr, "END")) { //special flag
         cell.x = -2;
         cell.y = -2;
         cell.value = non;

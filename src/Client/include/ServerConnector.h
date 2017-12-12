@@ -18,7 +18,7 @@ public:
     * The input: No Input		  										   *
     * The Output: No Output											       *
     * The Function operation: make the initialization of the serverPort
-    * and serverIP reading from the destination file.											   *
+    * and serverIP reading from the destination file.			           *
     ***********************************************************************/
     ServerConnector();
     /***********************************************************************
