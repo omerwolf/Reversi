@@ -14,7 +14,7 @@ RemotePlayerReciver::~RemotePlayerReciver() {
 }
 
 Cube RemotePlayerReciver::makeMove(vector<Move> temp) {
-    char* ptr =connector->getMove();
+    char* ptr = connector->getMove();
     Cube cell;
     if (!strcmp(ptr, "NO MOVE")){
         cell.x = -1;

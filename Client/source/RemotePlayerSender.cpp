@@ -15,13 +15,21 @@ RemotePlayerSender::~RemotePlayerSender() {
 Cube RemotePlayerSender::makeMove(vector<Move> move)  {
     Cube cell = HumanPlayer::makeMove(move);
     if (cell.x == -1 && cell.y == -1){
-        connector->sendMove("NO MOVE");
+        try {
+            connector->sendMove("NO MOVE");       
+        }  catch (const char* msg){
+            cout << msg << endl;
+        }
     }
     else {
         stringstream str;
         str << cell.x << ", " << cell.y;
         string temp = str.str();
-        connector->sendMove(temp.c_str());
+        try {
+            connector->sendMove(temp.c_str());
+        }  catch (const char* msg){
+            cout << msg << endl;
+        }
     }
     return cell;
 }

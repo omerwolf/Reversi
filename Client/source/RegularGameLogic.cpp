@@ -44,6 +44,8 @@ int RegularGameLogic::playTurn(Player *player) {
     else {
         cout << getSym(player->getName()) << " Played " << "(" << cell.x+1 << "," << cell.y+1 << ")" <<endl;
         flip(player->getName(), cell);
+        setVector(lowPossibleMoves(X), X);
+        setVector(lowPossibleMoves(O), O);
     }
     return 1;
 }

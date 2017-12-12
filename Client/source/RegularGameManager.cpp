@@ -77,6 +77,9 @@ void RegularGameManager::start() {
     do {
         if (logic->playTurn(XPlayer) == 1) {
             graphic();
+            if (isWinGame()){
+                return;
+            }
         }
         if (logic->playTurn(OPlayer) == 1){
             graphic();
