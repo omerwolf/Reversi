@@ -15,7 +15,7 @@ using namespace std;
 
 ServerConnector::ServerConnector() :clientSocket(0){
     ifstream myInfo;
-    myInfo.open("port_ip.txt");
+    myInfo.open("clientSetting.txt");
     if (myInfo.is_open()) {
         myInfo >> serverPort;
         myInfo >> serverIP;

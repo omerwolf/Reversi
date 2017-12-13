@@ -12,7 +12,7 @@ using namespace std;
 int main() {
     ifstream myInfo;
     int port;
-    myInfo.open("port_ip.txt");
+    myInfo.open("serverSetting.txt");
     if (myInfo.is_open()) {
         myInfo >> port;
     } else {
