@@ -60,4 +60,29 @@ Date:   Wed Nov 29 14:35:12 2017 +0200
     edit the CMakeLists.txt
 
 commit 1ec959df8b78b0ea18908d375d8d21a285cc0b28
+
+commit 7bb465336575355ab911a36fa855005649e3c165
+Author: omer <omer2wolf@gmail.com>
+Date:   Tue Dec 12 00:02:52 2017 +0200
+
+    Make the port/ip file
+    Update the server class to read from file port/ip
+
+commit b7fa481dfb3a3e61533040636626e57d43ac0c8b
+Author: yoel <yjasner@gmail.com>
+Date:   Wed Dec 13 01:19:47 2017 +0200
+
+    Notes
+
+commit 39d9fe5e3fc048c64992d8c1285de12a86cf076b
+Author: yoel <yjasner@gmail.com>
+Date:   Wed Dec 13 01:04:15 2017 +0200
+
+    Notes
+
+commit 9ba040cf1d362f3df0884925413ed0abdac6cc69
+Author: yoel <yjasner@gmail.com>
+Date:   Wed Dec 13 00:54:02 2017 +0200
+
 :
+
