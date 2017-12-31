@@ -11,6 +11,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <fstream>
+#include "limits"
 using namespace std;
 
 ServerConnector::ServerConnector() :clientSocket(0){
@@ -84,4 +85,16 @@ char* ServerConnector::getSign() {
         throw "Error in reading data";
     }
     return temp;
+}
+void remotePlayerMenu(){
+    int input;
+    cout << "Choose Option:" << endl;
+    cout << "   1.Host new game            , enter: start<name_of_game>"<< endl;
+    cout << "   2.See list of current games, enter: list_game" << endl;
+    cout << "   3.Join to game             , enter: join<name_of_game>" << endl;
+    cin >> input;
+    if (!cin.fail()) {
+        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); //skip bad input
+        break;
+
 }

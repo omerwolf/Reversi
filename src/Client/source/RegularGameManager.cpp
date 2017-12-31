@@ -61,7 +61,6 @@ int RegularGameManager::menu() {
     } while (true);
 }
 
-
 RegularGameManager::~RegularGameManager() {
     delete OPlayer;
     delete XPlayer;
@@ -70,7 +69,6 @@ RegularGameManager::~RegularGameManager() {
 void RegularGameManager::graphic() {
     logic->display();
 }
-
 
 void RegularGameManager::start() {
     graphic();
