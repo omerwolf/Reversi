@@ -17,6 +17,7 @@ int main() {
         myInfo >> port;
     } else {
         cout << "Unable to open the server/ip file" << endl;
+        return -1;
     }
     Server server(port);
     try {

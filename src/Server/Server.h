@@ -4,12 +4,17 @@
 #ifndef EX3_SERVER_H
 #define EX3_SERVER_H
 #include <iostream>
+#include <vector>
+#include <thread>
 
 class Server {
 private:
 
-    int port, serverSocket;
-    void handleClient(int clientSocket1, int clientSocket2);
+    int port, serverSocket, currentNumOfPlayer;
+    std::vector <pthread_t> threadList;
+    void* handleClientGame (void* game);
+    void* clientAccept(void *pVoid);
+    void* handleOneClient(void* clientSoket1);
 
 public:
     /***********************************************************************
