@@ -13,7 +13,7 @@
 #include <fstream>
 #include "limits"
 using namespace std;
-#define MAX_COMMAND_LEN 50;
+#define MAX_COMMAND_LEN 50
 
 
 ServerConnector::ServerConnector() :clientSocket(0){
@@ -59,6 +59,7 @@ void ServerConnector::connectToServer() {
         throw "Error connecting to server";
     }
     cout << "Connected to the server" <<endl;
+    remotePlayerMenu();
 }
 
 char* ServerConnector::getMove() {
@@ -88,17 +89,16 @@ char* ServerConnector::getSign() {
     }
     return temp;
 }
+
 void ServerConnector::remotePlayerMenu() {
-    char commandStr[MAX_COMMAND_LEN];
+    char commandStr [MAX_COMMAND_LEN];
     cout << "Choose Option:" << endl;
     cout << "   Host new game            , enter: start<name>" << endl;
     cout << "   See list of current games, enter: list_game" << endl;
     cout << "   Join to game             , enter: join<name>" << endl;
     cin >> commandStr;
-    int n = write(clientSocket, &commandStr, strlen(&commandStr) + 1);
+    int n = write(clientSocket, &commandStr, strlen(commandStr) + 1);
     if (n == -1) {
         throw "Error writing command";
     }
-}
-
 }

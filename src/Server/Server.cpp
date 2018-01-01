@@ -2,25 +2,28 @@
 * Name : Yoel Jasner & Omer Wolf									   *
 ***********************************************************************/
 #include "Server.h"
+#include "CommandManager.h"
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <unistd.h>
 #include <string.h>
+#include <string>
 #include <iostream>
 #include <stdio.h>
+#include <sstream>
+
 using namespace std;
 #define NUMOFPLAYER 10
-#define MAXSIZE 10
+#define MAXSIZECOMMAND 50
 
-typedef struct twoPlayer{
-    int clientSocket1, clientSocket2;
-};
+static void* handleOneClient(void* socket);
+static void* clientAccept(void* socket);
 
-Server::Server(int port): port(port), serverSocket(0){
+
+Server::Server(int port): port(port), serverSocket(0), serverThreadID(0){
 }
 
 void Server::start() {
-    pthread_t threads[NUMOFPLAYER];
     serverSocket = socket(AF_INET, SOCK_STREAM, 0);
     if (serverSocket == -1) {
         close(serverSocket);
@@ -41,28 +44,28 @@ void Server::start() {
         throw "Error on listening";
     };
     currentNumOfPlayer = 0;
-    int rc = pthread_create(&threadList[currentNumOfPlayer], NULL, clientAccept, NULL);
+    int rc = pthread_create(&serverThreadID, NULL, &clientAccept, (void*)serverSocket);
     if (rc){
         cout << "Error: unable to create thread " << rc << endl;
     }
 }
 
-void* Server::clientAccept(void *pVoid) {
+static void* clientAccept(void *socket) {
+    long serverSocket = (long) socket;
     // Define the client socket's structures
     struct sockaddr_in clientAddress;
     socklen_t clientAdderssLen;
-    while (currentNumOfPlayer < NUMOFPLAYER) {
-        currentNumOfPlayer++;
+    while (true) {
         cout << "Waiting for client connections..." << endl;
         // Accept a new client connection
         int clientSocket = accept(serverSocket, (struct sockaddr *) &clientAddress, &clientAdderssLen);
         if (clientSocket == -1) {
             throw "Error on accept socket1";
         }
-        cout << "Client 1 connected" << endl;
-        currentNumOfPlayer++;
+        cout << "Client connected" << endl;
         try {
-            int rc = pthread_create(&threadList[currentNumOfPlayer], NULL, handleOneClient, (void*) clientSocket);
+            pthread_t threadId;
+            int rc = pthread_create(&threadId, NULL, &handleOneClient, (void*) clientSocket);
             if (rc){
                 cout << "Error: unable to create thread " << rc << endl;
             }
@@ -70,20 +73,38 @@ void* Server::clientAccept(void *pVoid) {
             cout<< msg <<endl;
         }
         close(clientSocket);
-        currentNumOfPlayer--;
     }
 }
 
-void* Server::handleOneClient(void* clientSocket){
-    int clientSocket1 = (int) clientSocket;
-    char buffer[50];
-    twoPlayer* game;
-    game->clientSocket1 = clientSocket1;
-    int check = read(clientSocket1, buffer, sizeof(buffer));
+static void* handleOneClient(void* socket){
+    long clientSocket = (long) socket;
+    char buffer[MAXSIZECOMMAND];
+    int check = read(clientSocket, buffer, sizeof(buffer));
     if (check == -1) {
-        throw "Error reading the client 1 move" ;
+        throw "Error reading the client command" ;
+        return NULL;
     }
-    try {
+    string str(buffer);
+    istringstream iss(str);
+    string command;
+    string nameOfGame;
+    iss >> command;
+    //command check
+    if (command != "start" && "list_games" && "join" && "play" && "close") {
+        throw "Error matching command";
+        close(clientSocket);
+        return NULL;
+    }
+    else {
+        if (command == "start" && "join" && "play" && "close") {
+            iss >> nameOfGame;
+        } else {
+            nameOfGame = "default";
+        }
+    }
+    CommandManager::getInstance()->executeCommand(command, nameOfGame, clientSocket);
+}
+    /*try
         int rc = pthread_create(&threadList[currentNumOfPlayer], NULL, handleClient, (void*) game);
         if (rc){
             cout << "Error: unable to create thread " << rc << endl;
@@ -91,67 +112,12 @@ void* Server::handleOneClient(void* clientSocket){
     } catch (const char* msg){
         cout<< msg <<endl;
     }
-    close(clientSocket1);
-}
-
-
-void* Server::handleClientGame(void* game) {
-    char init = '1';
-    char init2 = '2';
-    twoPlayer* temp = (twoPlayer*)game;
-    int clientSocket1 = temp->clientSocket1;
-    int clientSocket2 = temp->clientSocket2;
-    //write color to player1
-    int check = write(clientSocket1, &init, sizeof(init));
-    if (check == -1){
-        throw  "Error writing to socket1" ;
-    }
-    //write color to player2
-    check = write(clientSocket2, &init2, sizeof(init2));
-    if (check == -1){
-        throw "Error writing to socket2" ;
-    }
-    while (true) {
-        char buffer[MAXSIZE];
-        //Player1 move
-        int n = read(clientSocket1, buffer, sizeof(buffer));
-        if (n == -1) {
-            throw "Error reading the client 1 move" ;
-
-        }
-        if (n == 0) {
-            throw "Client 1 disconnected" ;
-        }
-        n = write(clientSocket2, &buffer, strlen(buffer)+1);
-        if (n == -1) {
-            throw "Error writing to socket2" ;
-        }
-        char buff[MAXSIZE];
-        //Player2 move
-        n = read(clientSocket2, buff, sizeof(buff));
-        if (n == -1) {
-            throw "Error reading the client 2 move" ;
-        }
-        if (n == 0) {
-            throw "Client 2 disconnected" ;
-        }
-        n = write(clientSocket1, &buff, strlen(buff)+1);
-        if (n == -1) {
-            throw "Error writing to socket1" ;
-        }
-    }
-
-}
+    close(clientSocket1);*/
 
 
 void Server::stop() {
-    string str;
-    while (true){
-        cin >> str;
-        if (!strcmp(str.c_str(), "exit")){
-            close(serverSocket);
-            break;
-        }
-    }
+    ///close all threadId games
+    pthread_cancel(serverThreadID);
+    close(serverSocket);
 }
 

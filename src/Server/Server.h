@@ -5,16 +5,14 @@
 #define EX3_SERVER_H
 #include <iostream>
 #include <vector>
-#include <thread>
+#include <pthread.h>
 
 class Server {
 private:
 
     int port, serverSocket, currentNumOfPlayer;
+    pthread_t serverThreadID;
     std::vector <pthread_t> threadList;
-    void* handleClientGame (void* game);
-    void* clientAccept(void *pVoid);
-    void* handleOneClient(void* clientSoket1);
 
 public:
     /***********************************************************************
@@ -40,7 +38,7 @@ public:
     * The Function operation: shut down the socket                         *
     ***********************************************************************/
     void stop();
-
+    int getNumOfPlayer(){ return currentNumOfPlayer;};
 };
 
 
