@@ -76,12 +76,12 @@ static void* clientAccept(void *socket) {
     }
 }
 
-static void* handleOneClient(void* socket){
+static void* handleOneClient(void* socket) {
     long clientSocket = (long) socket;
     char buffer[MAXSIZECOMMAND];
     int check = read(clientSocket, buffer, sizeof(buffer));
     if (check == -1) {
-        throw "Error reading the client command" ;
+        throw "Error reading the client command";
         return NULL;
     }
     string str(buffer);
@@ -94,8 +94,7 @@ static void* handleOneClient(void* socket){
         throw "Error matching command";
         close(clientSocket);
         return NULL;
-    }
-    else {
+    } else {
         if (command == "start" && "join" && "play" && "close") {
             iss >> nameOfGame;
         } else {
@@ -104,15 +103,6 @@ static void* handleOneClient(void* socket){
     }
     CommandManager::getInstance()->executeCommand(command, nameOfGame, clientSocket);
 }
-    /*try
-        int rc = pthread_create(&threadList[currentNumOfPlayer], NULL, handleClient, (void*) game);
-        if (rc){
-            cout << "Error: unable to create thread " << rc << endl;
-        }
-    } catch (const char* msg){
-        cout<< msg <<endl;
-    }
-    close(clientSocket1);*/
 
 
 void Server::stop() {

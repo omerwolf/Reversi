@@ -12,19 +12,20 @@
 
 class GameRoom {
 private:
-    int clientSocket1, clientSocket2;
-    int threadId;
+    int clientSocket1, clientSocket2, counter=0;
+    pthread_t threadId;
+
 public:
     GameRoom();
     ~GameRoom();
-    int join();
-    void play(void* game);
+    void play();
     int end();
 
     void setClientSocket1(int clientSocket1);
 
     void setClientSocket2(int clientSocket2);
-
+    void increaseCounter() {counter++;};
+    int getCounter(){ return counter;};
     void setThreadId(int threadId);
 };
 

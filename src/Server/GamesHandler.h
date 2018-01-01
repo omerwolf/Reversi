@@ -17,6 +17,8 @@ public:
     ~GamesHandler();
     int start (string nameOfGame, int clientSocket);
     vector <string> list(int clientSocket);
+    int join (string nameOfGame, int clientSocket);
+    int end(string nameOfGame);
 };
 
 

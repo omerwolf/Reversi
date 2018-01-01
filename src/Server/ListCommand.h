@@ -7,8 +7,9 @@
 
 
 #include "GamesHandler.h"
+#include "Command.h"
 
-class ListCommand {
+class ListCommand : public Command{
     ListCommand(){};
     void execute(GamesHandler* master, string nameOfGame, int clientSocket = 0) ;
 };
