@@ -47,6 +47,18 @@ void Server::start() {
     int rc = pthread_create(&serverThreadID, NULL, &clientAccept, (void*)serverSocket);
     if (rc){
         cout << "Error: unable to create thread " << rc << endl;
+        pthread_exit(NULL);
+    }
+    waitForExit();
+}
+
+void Server::waitForExit() {
+    string input;
+    while (true){
+        cin >> input;
+        if (!strcmp(input.c_str(), "exit")){
+            return stop();
+        }
     }
 }
 
@@ -54,25 +66,22 @@ static void* clientAccept(void *socket) {
     long serverSocket = (long) socket;
     // Define the client socket's structures
     struct sockaddr_in clientAddress;
-    socklen_t clientAdderssLen;
+    socklen_t clientAdderssLen =0;
     while (true) {
         cout << "Waiting for client connections..." << endl;
         // Accept a new client connection
         int clientSocket = accept(serverSocket, (struct sockaddr *) &clientAddress, &clientAdderssLen);
         if (clientSocket == -1) {
-            throw "Error on accept socket1";
+            cout << "Error on accept socket1";
+            return NULL;
         }
         cout << "Client connected" << endl;
-        try {
-            pthread_t threadId;
-            int rc = pthread_create(&threadId, NULL, &handleOneClient, (void*) clientSocket);
-            if (rc){
-                cout << "Error: unable to create thread " << rc << endl;
-            }
-        } catch (const char* msg){
-            cout<< msg <<endl;
+        pthread_t threadId;
+        int rc = pthread_create(&threadId, NULL, &handleOneClient, (void*) clientSocket);
+        if (rc){
+            cout << "Error: unable to create thread " << rc << endl;
+            return NULL;
         }
-        close(clientSocket);
     }
 }
 
@@ -81,17 +90,20 @@ static void* handleOneClient(void* socket) {
     char buffer[MAXSIZECOMMAND];
     int check = read(clientSocket, buffer, sizeof(buffer));
     if (check == -1) {
-        throw "Error reading the client command";
+        cout << "Error reading the client command";
+        close(clientSocket);
         return NULL;
     }
+    cout << buffer;
     string str(buffer);
     istringstream iss(str);
     string command;
     string nameOfGame;
     iss >> command;
+    cout << command << nameOfGame;  
     //command check
     if (command != "start" && "list_games" && "join" && "play" && "close") {
-        throw "Error matching command";
+        cout << "Error matching command";
         close(clientSocket);
         return NULL;
     } else {

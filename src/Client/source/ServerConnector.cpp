@@ -97,8 +97,8 @@ void ServerConnector::remotePlayerMenu() {
     cout << "   See list of current games, enter: list_game" << endl;
     cout << "   Join to game             , enter: join<name>" << endl;
     cin >> commandStr;
-    int n = write(clientSocket, &commandStr, strlen(commandStr) + 1);
+    int n = write(clientSocket, commandStr, strlen(commandStr) + 1);
     if (n == -1) {
-        throw "Error writing command";
+        cout << "Error writing command";
     }
 }

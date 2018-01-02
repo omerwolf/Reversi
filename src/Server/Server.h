@@ -12,7 +12,6 @@ private:
 
     int port, serverSocket, currentNumOfPlayer;
     pthread_t serverThreadID;
-    std::vector <pthread_t> threadList;
 
 public:
     /***********************************************************************
@@ -38,6 +37,7 @@ public:
     * The Function operation: shut down the socket                         *
     ***********************************************************************/
     void stop();
+    void waitForExit();
     int getNumOfPlayer(){ return currentNumOfPlayer;};
 };
 

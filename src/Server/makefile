@@ -1,5 +1,5 @@
 target:compileAll
-	g++ -o ../../exe/server.out *.o
+	g++ -pthread -o ../../exe/server.out *.o
 	rm -f *.o
 
 compileAll: *.h *.cpp
