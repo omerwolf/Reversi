@@ -50,6 +50,7 @@ int RegularGameManager::menu() {
                     OPlayer = new RemotePlayerSender(O, connector);
                     XPlayer = new RemotePlayerReciver(X, connector);
                 }
+                delete str;
                 return 0;
         }
     } while (true);

@@ -10,14 +10,14 @@
 class CommandManager {
 private:
     CommandManager();
-    ~CommandManager();
     CommandManager(const CommandManager& temp);
     map <string, Command*> commandMap;
     static CommandManager* instance;
     static pthread_mutex_t lock;
     GamesHandler* master;
 public:
-   /**********************************************************************
+    ~CommandManager();
+    /**********************************************************************
    * function name: executeCommand
    * The input: string command, string name of game, int Socket (default value = 0)
    * The Output: No Output

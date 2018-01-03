@@ -20,7 +20,8 @@ Cube RemotePlayerReciver::makeMove(vector<Move> temp) {
         ptr = connector->getMove();
     } catch (const char* msg){
         cout << msg <<endl;
-        ptr = const_cast<char *>("END");
+        ptr = new char;
+        strcpy(ptr,"END");
     }
     Cube cell;
     if (!strcmp(ptr, "NO MOVE")){ //special flag

@@ -21,10 +21,14 @@ CommandManager::CommandManager() {
 }
 
 CommandManager::~CommandManager() {
+    if (instance != 0){
+        delete instance;
+    }
     map<string, Command *>::iterator it;
     for (it = commandMap.begin(); it !=commandMap.end(); it++) {
         delete it->second;
     }
+    delete master;
 }
 
 CommandManager* CommandManager::getInstance() {

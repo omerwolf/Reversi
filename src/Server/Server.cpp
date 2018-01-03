@@ -122,7 +122,6 @@ static void* handleOneClient(void* socket) {
 
 
 void Server::stop() {
-    delete CommandManager::getInstance()->get();
     pthread_cancel(serverThreadID);
     pthread_join(serverThreadID, NULL);
     close(serverSocket);

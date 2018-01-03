@@ -1,27 +1,302 @@
-commit 8943ee01887b81e9b6d26b47da69d65757086ffc
+commit fa7bfccedd8d6a9d50b2ae78e9b68b862c8ca848
 Author: yoel <yjasner@gmail.com>
-Date:   Wed Nov 29 23:35:13 2017 +0200
+Date:   Wed Jan 3 21:42:28 2018 +0200
 
-    Add all test, new names on top of the all files.
+    ex5
 
-commit 8f1ae1c49815c21750f4b4e85355c525f7111440
+commit 68f18b2c87984412bfbbc9f1ab06e4f85feb5911
 Author: yoel <yjasner@gmail.com>
-Date:   Wed Nov 29 22:25:57 2017 +0200
+Date:   Wed Jan 3 21:37:57 2018 +0200
 
-    testfiles
+    ex5
 
-commit 10d2974f328afc1e4b036e1af17326244e80368d
+commit f2f8e902e7422b58429803e670b1b7e7a491eaec
 Author: yoel <yjasner@gmail.com>
-Date:   Wed Nov 29 20:10:29 2017 +0200
+Date:   Wed Jan 3 21:31:34 2018 +0200
 
-    memory leak fixed on operator overloading =.
+    ex5
 
-commit 589500a942dfa350f93136421cfbeb7eaa58519c
-Merge: dd16ce6 2265f4d
+commit 1957b14f6e21da59b8514df8388878177b96f80c
+Merge: c8a3a6e 7b1f13b
 Author: yoel <yjasner@gmail.com>
-Date:   Wed Nov 29 18:24:34 2017 +0200
+Date:   Wed Jan 3 20:26:01 2018 +0200
 
-:...skipping...
+    Merge branch 'master' of https://github.com/omerwolf/Reversi
+
+commit c8a3a6e92257931b91417787e0f57af09e986ec7
+Author: yoel <yjasner@gmail.com>
+Date:   Wed Jan 3 20:25:52 2018 +0200
+
+    ex5
+
+commit 7b1f13bd6dffaa33a6dbbe57c65df3a4bb6a0f0c
+Author: omer <omer2wolf@gmail.com>
+Date:   Wed Jan 3 19:53:32 2018 +0200
+
+    start write the remote player menu
+
+commit 7b4c566aad35de12564ca6ccf79b2c59dd7464f0
+Author: yoel <yjasner@gmail.com>
+Date:   Wed Jan 3 17:53:54 2018 +0200
+
+    ex5
+
+commit 46734d0dedb89366e1f6732969488483935bc288
+Author: yoel <yjasner@gmail.com>
+Date:   Wed Jan 3 17:48:32 2018 +0200
+
+    ex5
+
+commit b1f1a1a6b6cac8728bc65f1555190529121141bd
+Author: yoel <yjasner@gmail.com>
+Date:   Wed Jan 3 04:22:41 2018 +0200
+
+    ex5
+
+commit 83f3cb0674c0af346057a5a4f357fbfa42a3edf6
+Author: yoel <yjasner@gmail.com>
+Date:   Wed Jan 3 01:04:49 2018 +0200
+
+    ex5
+
+commit ea840d4aed986237c5d05e26013d1f5a0b69cfc0
+Author: yoel <yjasner@gmail.com>
+Date:   Tue Jan 2 01:05:37 2018 +0200
+
+    ex5
+
+commit 1e77b9738ec16ab03785cbdadb72fc1521a86859
+Author: yoel <yjasner@gmail.com>
+Date:   Tue Jan 2 00:22:55 2018 +0200
+
+    ex5
+
+commit 4bfc5848bbfa656f9826bdfd3e2ead7ad9bd8022
+Author: omer <omer2wolf@gmail.com>
+Date:   Mon Jan 1 19:34:13 2018 +0200
+
+    start write the remote player menu
+
+commit e5ad80f008d7d0f36e76921ba4ef628de3046abf
+Merge: 99f5875 b0d9aee
+Author: omer <omer2wolf@gmail.com>
+Date:   Sun Dec 31 22:49:37 2017 +0200
+
+    Merge remote-tracking branch 'origin/master'
+    
+    # Conflicts:
+    #   CMakeLists.txt
+
+commit 99f587582fbd4da9df373272bd2e292493e10603
+Author: omer <omer2wolf@gmail.com>
+Date:   Sun Dec 31 22:49:09 2017 +0200
+
+    start write the remote player menu
+
+commit b0d9aee3c51a799a48e034a380577220843364e6
+Author: yoel <yjasner@gmail.com>
+Date:   Sun Dec 31 22:47:46 2017 +0200
+
+    ex5
+
+commit 2a7a948f22c1d8a2bd9373e2d942d18f37fe3798
+Author: yoel <yjasner@gmail.com>
+Date:   Wed Dec 13 16:29:25 2017 +0200
+
+    Notes
+
+commit b3111ed85da59a2136ba078d9901c5b2646c0b47
+Merge: c4398b5 62cdc7c
+Author: yoel <yjasner@gmail.com>
+Date:   Wed Dec 13 16:28:13 2017 +0200
+
+    Merge remote-tracking branch 'origin/master'
+
+commit c4398b52ec71273ed5b001160c4f6a5cfd794016
+Author: yoel <yjasner@gmail.com>
+Date:   Wed Dec 13 16:28:01 2017 +0200
+
+    Notes
+
+commit 62cdc7c58215800341f4160540d3fdf9b829146a
+Author: omer <omer2wolf@gmail.com>
+Date:   Wed Dec 13 15:35:10 2017 +0200
+
+    update gitLog
+
+commit b7fa481dfb3a3e61533040636626e57d43ac0c8b
+Author: yoel <yjasner@gmail.com>
+Date:   Wed Dec 13 01:19:47 2017 +0200
+
+    Notes
+
+commit 39d9fe5e3fc048c64992d8c1285de12a86cf076b
+Author: yoel <yjasner@gmail.com>
+Date:   Wed Dec 13 01:04:15 2017 +0200
+
+    Notes
+
+commit 9ba040cf1d362f3df0884925413ed0abdac6cc69
+Author: yoel <yjasner@gmail.com>
+Date:   Wed Dec 13 00:54:02 2017 +0200
+
+    order to files
+
+commit 860afe314c8d36dc19c25651a0e1d79458dac592
+Author: yoel <yjasner@gmail.com>
+Date:   Wed Dec 13 00:52:38 2017 +0200
+
+    add check if the game is finished every turn, set the vector of moves every turn for both player.
+
+commit e64d5e00b52aa84d43ccab12d23d9c312ec1ff05
+Author: yoel <yjasner@gmail.com>
+Date:   Wed Dec 13 00:18:27 2017 +0200
+
+    add check if the game is finished every turn, set the vector of moves every turn for both player.
+
+commit 75f6d1333a1f4523b8069db44af5e43c03bd2bf0
+Author: yoel <yjasner@gmail.com>
+Date:   Tue Dec 12 14:59:30 2017 +0200
+
+    add new getSign func on server connector add some more printing.
+
+commit 357cdfc27f7d57c2692a373174e8572133168f3e
+Author: yoel <yjasner@gmail.com>
+Date:   Tue Dec 12 14:34:44 2017 +0200
+
+    delete double free on remote d'str add stop func to server main, add try&catch to handleClient function.
+
+commit 7bb465336575355ab911a36fa855005649e3c165
+Author: omer <omer2wolf@gmail.com>
+Date:   Tue Dec 12 00:02:52 2017 +0200
+
+    Make the port/ip file
+    Update the server class to read from file port/ip
+
+commit e8fc01784cc00d73d88e064f20c9c4c208dda9e8
+Author: yoel <yjasner@gmail.com>
+Date:   Mon Dec 11 23:03:44 2017 +0200
+
+    connection client vs server read and write move.
+
+commit cf0c0e830492f3552da7bf66cbefa9fead3d3171
+Author: yoel <yjasner@gmail.com>
+Date:   Mon Dec 11 20:31:09 2017 +0200
+
+    add mainServer and CmakeList
+
+commit 79d1b049ba41ca8d8be63d4b64790c7186e3a277
+Author: yoel <yjasner@gmail.com>
+Date:   Mon Dec 11 16:42:25 2017 +0200
+
+    add mainServer and CmakeList
+
+commit 8836ecdb0561b048c7ec75ca318f25dfaef9967d
+Author: omer <omer2wolf@gmail.com>
+Date:   Mon Dec 11 03:59:33 2017 +0200
+
+    Make the port/ip file
+    Update the server class to read from file port/ip
+
+commit f1ef0db24daf261736de24589c136a7d677a9d3e
+Author: omer <omer2wolf@gmail.com>
+Date:   Mon Dec 11 03:54:41 2017 +0200
+
+    Make the port/ip file
+    Update the server class to read from file port/ip
+
+commit b298fde0bc6e7dd83bd477a99ed4f8d5b59db380
+Author: omer <omer2wolf@gmail.com>
+Date:   Mon Dec 11 03:53:04 2017 +0200
+
+    Make the port/ip file
+    Update the server class to read from file port/ip
+
+commit caedc4fe8d6b462f2eba584b17f164676729f794
+Merge: d4a2d98 99e5f88
+Author: omer <omer2wolf@gmail.com>
+Date:   Mon Dec 11 03:47:39 2017 +0200
+
+    Merge remote-tracking branch 'origin/master'
+    
+    # Conflicts:
+    #   Server/mainServer.cpp
+
+commit 99e5f88479ec563a2723f26368facbe28d878f9a
+Author: yoel <yjasner@gmail.com>
+Date:   Mon Dec 11 15:07:07 2017 +0200
+
+    add mainServer and CmakeList
+
+commit d4a2d985634f9051e04269bcf12a2bf1bf637915
+Author: omer <omer2wolf@gmail.com>
+Date:   Mon Dec 11 03:41:42 2017 +0200
+
+    Make the port/ip file
+    Update the server class to read from file port/ip
+
+commit c8a7305a5be16a015f514c9028f26a3014fbcbac
+Author: omer <omer2wolf@gmail.com>
+Date:   Mon Dec 11 03:40:20 2017 +0200
+
+    Make the port/ip file
+    Update the server class to read from file port/ip
+
+commit 7a5eb33a3e4402730b63c4c3ac8e9db9e3d7638f
+Author: yoel <yjasner@gmail.com>
+Date:   Sun Dec 10 23:11:58 2017 +0200
+
+    repair CMakeList
+
+commit b575d16e0d5a154c99d33efeca0cb8ad582bc9fe
+Merge: 038c5ba a3de5d4
+Author: yoel <yjasner@gmail.com>
+Date:   Sun Dec 10 23:03:18 2017 +0200
+
+    Merge remote-tracking branch 'origin/master'
+    
+    # Conflicts:
+    #   CMakeLists.txt
+
+commit 038c5bae4fbb6b21298e2412ceb14f55b78fae19
+Author: yoel <yjasner@gmail.com>
+Date:   Sun Dec 10 23:02:26 2017 +0200
+
+    Add two Remote Player classes and a connector class to server.
+    change manager.
+
+commit a3de5d4d6420117d6972d7dbcf26f5f606c5add7
+Author: omer <omer2wolf@gmail.com>
+Date:   Sun Dec 10 21:51:04 2017 +0200
+
+    Write the main server class
+
+commit 917a18d48b2929e94741a3420f7fba800107aeaf
+Author: omer <omer2wolf@gmail.com>
+Date:   Wed Dec 6 20:37:38 2017 +0200
+
+    Write the server class
+
+commit d0df2ddc9e16502b85c8d1148d077666d07cbef0
+Author: yoel <yjasner@gmail.com>
+Date:   Wed Dec 6 17:35:51 2017 +0200
+
+    Add RemotePlayer class and server class.
+
+commit 4eb8499034dac0492c0a5b33ec8d996455a0f221
+Author: yoel <yjasner@gmail.com>
+Date:   Fri Dec 1 00:59:17 2017 +0200
+
+    all the Notes
+
+commit 121f8f73454b069929db00ebe58117f7cf299088
+Author: omer <omer2wolf@gmail.com>
+Date:   Thu Nov 30 17:59:06 2017 +0200
+
+    add info.txt - details about Yoel and Omer
+    add gitLog.txt - documentation about the git updates
+    add changeLog- documentation about the changes in ex3 from ex2
+
 commit 8943ee01887b81e9b6d26b47da69d65757086ffc
 Author: yoel <yjasner@gmail.com>
 Date:   Wed Nov 29 23:35:13 2017 +0200
@@ -60,29 +335,178 @@ Date:   Wed Nov 29 14:35:12 2017 +0200
     edit the CMakeLists.txt
 
 commit 1ec959df8b78b0ea18908d375d8d21a285cc0b28
+Merge: 5a4fc9e 234eb87
+Author: yoel <yjasner@gmail.com>
+Date:   Tue Nov 28 23:57:17 2017 +0200
 
-commit 7bb465336575355ab911a36fa855005649e3c165
+    CL-2017.2.3 <yoel@yoel-K53SD Merge branch 'master'
+
+commit 234eb8792723d115f2092a40fd62e1af22bbff91
 Author: omer <omer2wolf@gmail.com>
-Date:   Tue Dec 12 00:02:52 2017 +0200
+Date:   Tue Nov 28 22:11:49 2017 +0200
 
-    Make the port/ip file
-    Update the server class to read from file port/ip
+    add omer
 
-commit b7fa481dfb3a3e61533040636626e57d43ac0c8b
+commit 5a4fc9e0408d50e5c206369d61d783d2c5a3efa5
 Author: yoel <yjasner@gmail.com>
-Date:   Wed Dec 13 01:19:47 2017 +0200
+Date:   Tue Nov 28 21:57:37 2017 +0200
 
-    Notes
+    CL-2017.2.3 <yoel@yoel-K53SD Update vcs.xml
 
-commit 39d9fe5e3fc048c64992d8c1285de12a86cf076b
+commit c97d433ba1f36e5aab3b7f013e98e44cea3091b7
 Author: yoel <yjasner@gmail.com>
-Date:   Wed Dec 13 01:04:15 2017 +0200
+Date:   Tue Nov 28 21:56:56 2017 +0200
 
-    Notes
+    change size of board passed
 
-commit 9ba040cf1d362f3df0884925413ed0abdac6cc69
+commit 3751f9b0086f779e82c4b3cff0a79e4e6e93a68d
 Author: yoel <yjasner@gmail.com>
-Date:   Wed Dec 13 00:54:02 2017 +0200
+Date:   Tue Nov 28 21:48:14 2017 +0200
 
-:
+    Add the option that AIPlayer is X.
+
+commit a5048825c131e0397f0066be0edd75f2c7421704
+Author: yoel <yjasner@gmail.com>
+Date:   Tue Nov 28 21:35:01 2017 +0200
+
+    CL-2017.2.3 <yoel@yoel-K53SD Update vcs.xml
+
+commit 46f9f17a8dab7ef466fad57adc1e02ba1f53384d
+Author: yoel <yjasner@gmail.com>
+Date:   Tue Nov 28 21:33:46 2017 +0200
+
+    Add delete to all to pointer that was created.
+    delete the copy con's, only operator = overloading
+    build the AIPlayer in the RegularGameLogic class under deepPossibleMove function.
+
+commit d4700159353412768f5ad44294117bdea00bda23
+Author: yoel <yjasner@gmail.com>
+Date:   Tue Nov 28 13:04:31 2017 +0200
+
+    CL-2017.2.3 <yoel@yoel-K53SD Create CMake.xml
+
+commit 515a791184e0dfe99404ec48b78636d9a716cb7b
+Author: yoel <yjasner@gmail.com>
+Date:   Mon Nov 27 23:29:01 2017 +0200
+
+    CL-2017.2.3 <yoel@yoel-K53SD Update laf.xml Create colors.scheme.xml
+
+commit 95b4ff90f0499731f7a42ce44f3928abd6e09f5c
+Author: yoel <yjasner@gmail.com>
+Date:   Mon Nov 27 23:17:01 2017 +0200
+
+    CL-2017.2.3 <yoel@yoel-K53SD Create git.xml, editor.xml, laf.xml, Default.xml, debugger.xml
+
+commit 266ee24c9debeb255d5d96ff2a67ae5e8df89ccd
+Merge: b070866 86a6eab
+Author: yoel <yjasner@gmail.com>
+Date:   Mon Nov 27 23:14:29 2017 +0200
+
+    CL-2017.2.3 <yoel@yoel-K53SD Merge branch 'master'
+    
+    Conflicts:
+        vcs.xml
+
+commit 86a6eabbceee8853ac9e12e0631718dfb1286880
+Author: YoelJasner <33800695+YoelJasner@users.noreply.github.com>
+Date:   Mon Nov 27 23:02:58 2017 +0200
+
+    Delete project.default.xml
+
+commit 6e2711cd70209726f6b43b109d9981edca087f53
+Author: YoelJasner <33800695+YoelJasner@users.noreply.github.com>
+Date:   Mon Nov 27 23:02:42 2017 +0200
+
+    Delete laf.xml
+
+commit ee0ee1cfc22bb10eb2f6cb46d0b72e69cbab50b8
+Author: YoelJasner <33800695+YoelJasner@users.noreply.github.com>
+Date:   Mon Nov 27 23:02:34 2017 +0200
+
+    Delete git.xml
+
+commit 0d9cc4a082f01d18f4354acc115212d27d5122c8
+Author: YoelJasner <33800695+YoelJasner@users.noreply.github.com>
+Date:   Mon Nov 27 23:02:20 2017 +0200
+
+    Delete Default.xml
+
+commit 622723576add54bfbcba94fd034d3d21d3c60ad6
+Author: YoelJasner <33800695+YoelJasner@users.noreply.github.com>
+Date:   Mon Nov 27 23:01:58 2017 +0200
+
+    Delete github_settings.xml
+
+commit 7447d9fc416c9e57f74d4c688335943af2fd1d5e
+Author: YoelJasner <33800695+YoelJasner@users.noreply.github.com>
+Date:   Mon Nov 27 23:01:44 2017 +0200
+
+    Delete vcs.xml
+
+commit dc2c2de5117eaf0148d475419200dbc55061568d
+Author: YoelJasner <33800695+YoelJasner@users.noreply.github.com>
+Date:   Mon Nov 27 23:01:28 2017 +0200
+
+    Delete test_something.cpp
+
+commit 039f304d56950e9f0952c6ba5b16fc793a65266b
+Author: YoelJasner <33800695+YoelJasner@users.noreply.github.com>
+Date:   Mon Nov 27 23:00:54 2017 +0200
+
+    Add files via upload
+
+commit b070866cc8aaa37479120aecc20f8d886569596e
+Author: yoel <yjasner@gmail.com>
+Date:   Mon Nov 27 23:00:13 2017 +0200
+
+    CL-2017.2.3 <yoel@yoel-K53SD Update vcs.xml
+
+commit 0efb12c7a5576e64d8fbee35ffaa84636975c400
+Author: yoel <yjasner@gmail.com>
+Date:   Mon Nov 27 22:54:38 2017 +0200
+
+    delete
+
+commit 29f1907e87dd48e09f7f7c32b4569eb2f7d21eac
+Author: yoel <yjasner@gmail.com>
+Date:   Mon Nov 27 22:51:06 2017 +0200
+
+    haha
+
+commit 8a7aa7394bb2659a06e8046db6c42af41af8c4da
+Merge: a8ed7b1 dbd6414
+Author: yoel <yoel@yoel-K53SD>
+Date:   Mon Nov 27 22:48:47 2017 +0200
+
+    CL-2017.2.3 <yoel@yoel-K53SD Merge branch 'master'
+
+commit a8ed7b19e3c830681514672b656ec65c99cfe627
+Author: yoel <yoel@yoel-K53SD>
+Date:   Mon Nov 27 22:48:47 2017 +0200
+
+    CL-2017.2.3 <yoel@yoel-K53SD Create vcs.xml, git.xml, github_settings.xml
+
+commit dbd6414091d676759be8fa4cfad791642c4a662a
+Author: omer <omer2wolf@gmail.com>
+Date:   Mon Nov 27 22:39:58 2017 +0200
+
+    add omer
+
+commit 06b0226cae265dd64eb1bea4e97cf7b2178be8dd
+Author: yoel <yoel@yoel-K53SD>
+Date:   Mon Nov 27 22:29:25 2017 +0200
+
+    CL-2017.2.3 <yoel@yoel-K53SD Delete other.xml
+
+commit 59b8591c2481675273ad0e06d855b2e9bc389ef0
+Author: YoelJasner <33800695+YoelJasner@users.noreply.github.com>
+Date:   Mon Nov 27 21:42:47 2017 +0200
+
+    Add files via upload
+
+commit 56514a7116f0e2633d5454a5ff5981b777f731ef
+Author: yoel <yoel@yoel-K53SD>
+Date:   Mon Nov 27 21:36:58 2017 +0200
+
+    CL-2017.2.3 <yoel@yoel-K53SD Create project.default.xml, colors.scheme.xml, other.xml, editor.xml, laf.xml, Default.xml, debugger.xml
 
