@@ -69,7 +69,7 @@ void GameRoom::setClientSocket2(int clientSocket2) {
     GameRoom::clientSocket2 = clientSocket2;
 }
 
-void GameRoom::setThreadId(int threadId) {
+void GameRoom::setThreadId(pthread_t threadId) {
     GameRoom::threadId = threadId;
 }
 
