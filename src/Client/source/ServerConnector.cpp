@@ -117,22 +117,30 @@ int ServerConnector::remotePlayerMenu() {
     string nameOfGame;
     iss >> command;
     if (!strcmp(command.c_str(),"list_games")){
-        while (true){
+        int num;
+        int check = read(clientSocket, &num, sizeof(num));
+        for (int i = 0; i < num ; i++){
+            int size;
             char str[MAX_COMMAND_LEN];
-            int check = read(clientSocket, str, sizeof(str));
+            int check = read(clientSocket, &size, sizeof(size));
             if (check == -1) {
                 cout << "Error reading command";
             }
             else if ( check == 0){
                 throw "Client is disconnected";
             }
-            else if (!strcmp(str, "exit")){
-                return 0;
+            check = read(clientSocket, str, size+1);
+            if (check == -1) {
+                cout << "Error reading command";
+            }
+            else if ( check == 0){
+                throw "Client is disconnected";
             }
             else{
                 cout << str << endl;
             }
         }
+        return 0;
     }
     else if ((!strcmp(command.c_str(), "start") || (!strcmp(command.c_str(), "join")))){
         cout << "waiting for other player to join" << endl;

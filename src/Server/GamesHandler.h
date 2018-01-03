@@ -27,7 +27,7 @@ public:
   * The input: no input		 										     *
   * The Output: no output										         *                         *
   ***********************************************************************/
-    ~GamesHandler(){};
+    ~GamesHandler();
   /**********************************************************************
    * function name: start
    * The input: string nameOfGame, int clientSocket		 										     *

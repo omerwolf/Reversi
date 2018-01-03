@@ -8,12 +8,7 @@ using namespace std;
 
 RegularGameManager::RegularGameManager(GameLogic* log) {
     logic = log;
-    try {
-        menu();
-    } catch (const char *msg) {
-        cout <<  msg << endl;
-        this->~RegularGameManager();
-    }
+    menu();
 }
 
 int RegularGameManager::menu() {
@@ -45,12 +40,7 @@ int RegularGameManager::menu() {
                 XPlayer = new HumanPlayer(X);
                 return 0;
             case 3:
-                try {
-                    connector->connectToServer();
-                } catch (const char * msg){
-                    cout << msg << endl;
-                    return NULL;
-                }
+                connector->connectToServer();
                 str = connector->getSign();
                 if (!strcmp(str,"1")){
                     OPlayer = new RemotePlayerReciver(O, connector);

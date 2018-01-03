@@ -8,10 +8,19 @@
 
 void ListCommand::execute(GamesHandler *master, string nameOfGame, int clientSocket) {
     vector <string> listofGame = master->list(clientSocket);
-    for (unsigned int  i = 0 ; i< listofGame.size(); i++){
-        char buffer[50];
-        strcpy(buffer, listofGame[i].c_str());
-        write(clientSocket, &buffer, strlen(buffer)+1);
+    char buffer[50];
+    int num = listofGame.size();
+    int n = write(clientSocket, &num, sizeof(num));
+    for (vector <string>::iterator iter = listofGame.begin() ; iter != listofGame.end(); iter++){
+        num = iter->size();
+        int n = write(clientSocket, &num, sizeof(num));
+        if (n == -1){
+            cout << "Error in writing to socket" << endl;
+        }
+        n = write(clientSocket, iter->c_str(), num+1);
+        if (n == -1){
+            cout << "Error in writing to socket" << endl;
+        }
     }
     close(clientSocket);
 }

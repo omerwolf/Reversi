@@ -78,11 +78,11 @@ static void* clientAccept(void *socket) {
         cout << "Client connected" << endl;
         pthread_t threadId;
         int rc = pthread_create(&threadId, NULL, &handleOneClient, (void*) clientSocket);
-        ///Server::setThreadVector(threadId);
         if (rc){
             cout << "Error: unable to create thread " << rc << endl;
             return NULL;
         }
+        pthread_detach(pthread_self());
     }
 }
 
@@ -122,10 +122,9 @@ static void* handleOneClient(void* socket) {
 
 
 void Server::stop() {
-    /*for (int i = 0; i< thr.size(); i++){
-        pthread_cancel(thr[i]);
-    }*/
+    delete CommandManager::getInstance()->get();
     pthread_cancel(serverThreadID);
+    pthread_join(serverThreadID, NULL);
     close(serverSocket);
 }
 

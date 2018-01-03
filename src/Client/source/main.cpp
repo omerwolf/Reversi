@@ -12,9 +12,13 @@ using namespace std;
 
 int main() {
     GameLogic* logic = new RegularGameLogic(8);
-    GameManager* GM = new RegularGameManager(logic);
-    GM->start();
-    delete logic;
-    delete GM;
+    try {
+        GameManager* GM = new RegularGameManager(logic);
+        GM->start();
+        delete logic;
+        delete GM;
+    }   catch (const char* msg){
+        cout << msg <<endl;
+    }
     return 0;
 }

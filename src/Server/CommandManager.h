@@ -33,6 +33,7 @@ public:
    *                         of the command manager created.
    ***********************************************************************/
     static CommandManager* getInstance();
+    GamesHandler* get(){return master;};
 };
 
 

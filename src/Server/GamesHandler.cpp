@@ -1,11 +1,21 @@
-/***********************************************************************
-* Name : Yoel Jasner & Omer Wolf									   *
-***********************************************************************/
 #include <unistd.h>
 #include "GamesHandler.h"
 using namespace std;
 typedef enum result {failure, succsses};
 pthread_mutex_t GamesHandler::lock;
+
+GamesHandler::~GamesHandler(){
+    if (!roomMap.empty()){
+        for (map<string, GameRoom *>::iterator iter = roomMap.begin(); iter != roomMap.end(); ++iter) {
+            if (roomMap.find(iter->first) != roomMap.end()) {
+                roomMap[iter->first]->end();
+                pthread_mutex_lock(&lock);
+                roomMap.erase(iter->first);
+                pthread_mutex_unlock(&lock);
+            }
+        }
+    }
+}
 
 int GamesHandler::start(string nameOfGame, int clientSocket) {
     GameRoom* room;
@@ -37,10 +47,6 @@ vector<string> GamesHandler::list(int clientSocket) {
     }
     if (listOfGame.empty()){
         listOfGame.push_back("no game available");
-        listOfGame.push_back("exit");
-    }
-    else {
-        listOfGame.push_back("exit");
     }
     return listOfGame;
 }
@@ -58,8 +64,7 @@ int GamesHandler::join(string nameOfGame, int clientSocket) {
         } catch (const char* msg){
             cout<< msg <<endl;
         }
-        end(nameOfGame);
-        return 1;
+        return end(nameOfGame);
     }
     else{
         close(clientSocket);

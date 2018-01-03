@@ -16,7 +16,7 @@ RemotePlayerReciver::~RemotePlayerReciver() { // deleted when the game is over o
 
 Cube RemotePlayerReciver::makeMove(vector<Move> temp) {
     char* ptr;
-    try { 
+    try {
         ptr = connector->getMove();
     } catch (const char* msg){
         cout << msg <<endl;
@@ -45,6 +45,7 @@ Cube RemotePlayerReciver::makeMove(vector<Move> temp) {
         return cell;
     }
 }
+
 
 
 
