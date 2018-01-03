@@ -27,12 +27,14 @@ Cube RemotePlayerReciver::makeMove(vector<Move> temp) {
         cell.x = -1;
         cell.y = -1;
         cell.value = non;
+        delete ptr;
         return cell;
     }
     else if (!strcmp(ptr, "END")) { //special flag
         cell.x = -2;
         cell.y = -2;
         cell.value = non;
+        delete ptr;
         return cell;
     }
     else {
@@ -42,6 +44,7 @@ Cube RemotePlayerReciver::makeMove(vector<Move> temp) {
         temp[0] = ptr[3];
         cell.y = atoi(temp);
         cell.value = non;
+        delete ptr;
         return cell;
     }
 }
