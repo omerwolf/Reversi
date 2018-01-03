@@ -36,10 +36,23 @@ public:
     * function name: stop        							               *
     * The input: No Input		  										   *
     * The Output: No Output											       *
-    * The Function operation: shut down the socket                         *
+    * The Function operation: safe close the server                        *
     ***********************************************************************/
     void stop();
+    /***********************************************************************
+    * function name: waitForExit        					               *
+    * The input: No Input		  										   *
+    * The Output: No Output											       *
+    * The Function operation: run without halting, check if the client write
+     *                        the exit command                             *
+    ***********************************************************************/
     void waitForExit();
+    /***********************************************************************
+    * function name: getNumOfPlayer        						           *
+    * The input: No Input		  										   *
+    * The Output: No Output											       *
+    * The Function operation: Set the private member currentNumOfPlayer    *
+    ***********************************************************************/
     int getNumOfPlayer(){ return currentNumOfPlayer;};
  ///   static void setThreadVector(pthread_t thread){ Server::thr.push_back(thread);};
 };
