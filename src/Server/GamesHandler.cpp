@@ -75,7 +75,9 @@ int GamesHandler::join(string nameOfGame, int clientSocket) {
 int GamesHandler::end(string nameOfGame){
     if (roomMap.find(nameOfGame) != roomMap.end()){
         roomMap[nameOfGame]->end();
+        pthread_mutex_lock(&lock);
         roomMap.erase(nameOfGame);
+        pthread_mutex_unlock(&lock);
         return 1;
     }
     else
