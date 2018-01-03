@@ -34,6 +34,7 @@ vector<string> GamesHandler::list(int clientSocket) {
     }
     if (listOfGame.empty()){
         listOfGame.push_back("no game available");
+        listOfGame.push_back("exit");
     }
     else {
         listOfGame.push_back("exit");
