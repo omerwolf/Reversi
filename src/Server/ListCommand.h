@@ -10,6 +10,7 @@
 #include "Command.h"
 
 class ListCommand : public Command{
+public:
     ListCommand(){};
     void execute(GamesHandler* master, string nameOfGame, int clientSocket = 0) ;
 };

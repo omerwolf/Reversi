@@ -13,8 +13,8 @@ private:
     map <string, GameRoom*> roomMap;
     static pthread_mutex_t lock;
 public:
-    GamesHandler();
-    ~GamesHandler();
+    GamesHandler(){};
+    ~GamesHandler(){};
     int start (string nameOfGame, int clientSocket);
     vector <string> list(int clientSocket);
     int join (string nameOfGame, int clientSocket);

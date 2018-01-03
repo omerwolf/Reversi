@@ -94,13 +94,11 @@ static void* handleOneClient(void* socket) {
         close(clientSocket);
         return NULL;
     }
-    cout << buffer;
     string str(buffer);
     istringstream iss(str);
     string command;
     string nameOfGame;
     iss >> command;
-    cout << command << nameOfGame;  
     //command check
     if (command != "start" && "list_games" && "join" && "play" && "close") {
         cout << "Error matching command";

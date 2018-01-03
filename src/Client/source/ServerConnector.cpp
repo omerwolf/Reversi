@@ -91,13 +91,13 @@ char* ServerConnector::getSign() {
 }
 
 void ServerConnector::remotePlayerMenu() {
-    char commandStr [MAX_COMMAND_LEN];
+    string input ;
     cout << "Choose Option:" << endl;
     cout << "   Host new game            , enter: start<name>" << endl;
     cout << "   See list of current games, enter: list_game" << endl;
     cout << "   Join to game             , enter: join<name>" << endl;
-    cin >> commandStr;
-    int n = write(clientSocket, commandStr, strlen(commandStr) + 1);
+    getline(cin, input);
+    int n = write(clientSocket, input.c_str(), input.size()+1);
     if (n == -1) {
         cout << "Error writing command";
     }

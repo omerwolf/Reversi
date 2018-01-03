@@ -3,6 +3,9 @@
 ***********************************************************************/
 #include "CommandManager.h"
 #include "StartCommand.h"
+#include "JoinCommand.h"
+#include "ListCommand.h"
+#include "CloseCommand.h"
 
 using namespace std;
 CommandManager* CommandManager::instance = 0;
@@ -10,10 +13,10 @@ pthread_mutex_t CommandManager::lock;
 
 
 CommandManager::CommandManager() {
-    ///commandMap["start"] = new StartCommand();
-    ///commandMap["join"] = new JoinCommand();
-    ///commandMap["list_games"] = new ListCommand();
-    ///commandMap["close"] = new CloseCommand();
+    commandMap["start"] = new StartCommand();
+    commandMap["join"] = new JoinCommand();
+    commandMap["list_games"] = new ListCommand();
+    commandMap["close"] = new CloseCommand();
 }
 
 CommandManager::~CommandManager() {

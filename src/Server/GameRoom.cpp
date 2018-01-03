@@ -6,15 +6,11 @@
 #include "GameRoom.h"
 #define MAXSIZE 10
 
-typedef struct twoPlayer{
-    int clientSocket1, clientSocket2;
-};
 
 GameRoom::GameRoom(){}
 
 GameRoom::~GameRoom(){}
 
-///nt GameRoom::join();
 
 void GameRoom::play() {
         char init = '1';

@@ -1,5 +1,6 @@
 #include <unistd.h>
 #include "GamesHandler.h"
+using namespace std;
 typedef enum result {failure, succsses};
 pthread_mutex_t GamesHandler::lock;
 
@@ -9,7 +10,7 @@ int GamesHandler::start(string nameOfGame, int clientSocket) {
     if (roomMap.find(nameOfGame) == roomMap.end()){
         pthread_mutex_lock(&lock);
         if (roomMap.find(nameOfGame) == roomMap.end()) {
-            roomMap.insert(std::pair<string, GameRoom *>(nameOfGame, room));
+            roomMap.insert(pair<string, GameRoom *>(nameOfGame, room));
             roomMap[nameOfGame]->increaseCounter();
         }
         pthread_mutex_unlock(&lock);

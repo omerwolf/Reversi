@@ -9,9 +9,11 @@
 #include "GamesHandler.h"
 #include "Command.h"
 
-class JoinCommand: public Command {
-    JoinCommand(){};
+class JoinCommand: public Command { ;
     void execute(GamesHandler* master, string nameOfGame, int clientSocket = 0) ;
+
+public:
+    JoinCommand(){}
 };
 
 

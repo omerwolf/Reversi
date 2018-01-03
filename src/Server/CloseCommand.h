@@ -7,6 +7,7 @@
 #include "Command.h"
 
 class CloseCommand: public Command {
+public:
     CloseCommand(){};
     void execute(GamesHandler* master, string nameOfGame, int clientSocket = 0) ;
 };
