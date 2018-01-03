@@ -47,12 +47,11 @@ int RegularGameManager::menu() {
             case 3:
                 try {
                     connector->connectToServer();
-                    cout << "waiting for other player to join" << endl;
-                    str = connector->getSign();
                 } catch (const char * msg){
                     cout << msg << endl;
                     return NULL;
                 }
+                str = connector->getSign();
                 if (!strcmp(str,"1")){
                     OPlayer = new RemotePlayerReciver(O, connector);
                     XPlayer = new RemotePlayerSender(X, connector);
@@ -78,15 +77,25 @@ void RegularGameManager::graphic() {
 void RegularGameManager::start() {
     graphic();
     do {
-        if (logic->playTurn(XPlayer) == 1) {
-            graphic();
-            if (isWinGame()){
+        int i = logic->playTurn(XPlayer);
+        if (i == 1 || i == -2 ) {
+            if (i == 1) {
+                graphic();
+                if (isWinGame()) {
+                    return;
+                }
+            }
+            else {
                 return;
             }
         }
-        if (logic->playTurn(OPlayer) == 1){
-            graphic();
-
+        i = logic->playTurn(OPlayer);
+        if (i == 1 || i == -2){
+            if (i==1) {
+                graphic();
+            }
+            else
+                return;
         }
     } while (!isWinGame());
 }

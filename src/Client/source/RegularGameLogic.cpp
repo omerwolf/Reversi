@@ -41,6 +41,10 @@ int RegularGameLogic::playTurn(Player *player) {
         cout << getSym(player->getName()) << " You have no legal Move." <<endl;
         return -1;
     }
+    else if (cell.x == -2 && cell.y == -2) {
+        cout << getSym(player->getName()) << " Game is finished." <<endl;
+        return -2;
+    }
     else {
         cout << getSym(player->getName()) << " Played " << "(" << cell.x+1 << "," << cell.y+1 << ")" <<endl;
         flip(player->getName(), cell);

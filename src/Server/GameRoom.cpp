@@ -30,11 +30,10 @@ void GameRoom::play() {
             //Player1 move
             int n = read(clientSocket1, buffer, sizeof(buffer));
             if (n == -1) {
-                throw "Error reading the client 1 move" ;
-
+                throw "Error reading the client move" ;
             }
             if (n == 0) {
-                throw "Client 1 disconnected" ;
+                throw "Client disconnected" ;
             }
             n = write(clientSocket2, &buffer, strlen(buffer)+1);
             if (n == -1) {
@@ -44,10 +43,10 @@ void GameRoom::play() {
             //Player2 move
             n = read(clientSocket2, buff, sizeof(buff));
             if (n == -1) {
-                throw "Error reading the client 2 move" ;
+                throw "Error reading the client move" ;
             }
             if (n == 0) {
-                throw "Client 2 disconnected" ;
+                throw "Client disconnected" ;
             }
             n = write(clientSocket1, &buff, strlen(buff)+1);
             if (n == -1) {

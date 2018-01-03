@@ -66,7 +66,7 @@ public:
     * The Function operation: given a string write it to socket.           *
     ***********************************************************************/
     void sendMove(const char* str);
-    void remotePlayerMenu();
+    int remotePlayerMenu();
 };
 
 

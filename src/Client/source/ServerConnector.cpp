@@ -12,6 +12,8 @@
 #include <unistd.h>
 #include <fstream>
 #include "limits"
+#include <sstream>
+
 using namespace std;
 #define MAX_COMMAND_LEN 50
 
@@ -37,29 +39,31 @@ ServerConnector::~ServerConnector(){
 }
 
 void ServerConnector::connectToServer() {
-    clientSocket = socket(AF_INET, SOCK_STREAM, 0);
-    if (clientSocket == -1){
-        throw "Error opening socket";
-    }
-    struct in_addr address;
-    if (!inet_aton(serverIP.c_str(), &address)){
-        throw "Can't parse IP address";
-    }
-    struct hostent* server;
-    server = gethostbyaddr((const void*)&address, sizeof(address), AF_INET);
-    if (server == NULL){
-        throw "Host is unreachable";
-    }
-    struct sockaddr_in serverAddress;
-    bzero((char*)&address, sizeof(address));
-    serverAddress.sin_family = AF_INET;
-    memcpy((char*)&serverAddress.sin_addr.s_addr, (char*)server->h_addr, server->h_length);
-    serverAddress.sin_port = htons(serverPort);
-    if (connect(clientSocket,  (struct sockaddr*) &serverAddress, sizeof(serverAddress))== -1){
-        throw "Error connecting to server";
-    }
-    cout << "Connected to the server" <<endl;
-    remotePlayerMenu();
+    int n;
+    do {
+        clientSocket = socket(AF_INET, SOCK_STREAM, 0);
+        if (clientSocket == -1){
+            throw "Error opening socket";
+        }
+        struct in_addr address;
+        if (!inet_aton(serverIP.c_str(), &address)){
+            throw "Can't parse IP address";
+        }
+        struct hostent* server;
+        server = gethostbyaddr((const void*)&address, sizeof(address), AF_INET);
+        if (server == NULL){
+            throw "Host is unreachable";
+        }
+        struct sockaddr_in serverAddress;
+        bzero((char*)&address, sizeof(address));
+        serverAddress.sin_family = AF_INET;
+        memcpy((char*)&serverAddress.sin_addr.s_addr, (char*)server->h_addr, server->h_length);
+        serverAddress.sin_port = htons(serverPort);
+        if (connect(clientSocket,  (struct sockaddr*) &serverAddress, sizeof(serverAddress))== -1){
+            throw "Error connecting to server";
+        }
+        cout << "Connected to the server" <<endl;
+        n = remotePlayerMenu(); } while (n == 0);
 }
 
 char* ServerConnector::getMove() {
@@ -96,7 +100,7 @@ char* ServerConnector::getSign() {
     return temp;
 }
 
-void ServerConnector::remotePlayerMenu() {
+int ServerConnector::remotePlayerMenu() {
     string input ;
     cout << "Choose Option:" << endl;
     cout << "   Host new game            , enter: start<name>" << endl;
@@ -107,7 +111,12 @@ void ServerConnector::remotePlayerMenu() {
     if (n == -1) {
         cout << "Error writing command";
     }
-    if (!strcmp(input.c_str(),"list_games")){
+    string buffer(input);
+    istringstream iss(buffer);
+    string command;
+    string nameOfGame;
+    iss >> command;
+    if (!strcmp(command.c_str(),"list_games")){
         while (true){
             char str[MAX_COMMAND_LEN];
             int check = read(clientSocket, str, sizeof(str));
@@ -118,11 +127,17 @@ void ServerConnector::remotePlayerMenu() {
                 throw "Client is disconnected";
             }
             else if (!strcmp(str, "exit")){
-                connectToServer();
+                return 0;
             }
             else{
                 cout << str << endl;
             }
         }
     }
+    else if ((!strcmp(command.c_str(), "start") || (!strcmp(command.c_str(), "join")))){
+        cout << "waiting for other player to join" << endl;
+        return 1;
+    }
+    else
+        return 0;
 }
