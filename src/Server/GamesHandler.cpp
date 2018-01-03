@@ -5,7 +5,8 @@ typedef enum result {failure, succsses};
 pthread_mutex_t GamesHandler::lock;
 
 int GamesHandler::start(string nameOfGame, int clientSocket) {
-    GameRoom* room = new GameRoom();
+    GameRoom* room;
+    room = new GameRoom();
     room->setClientSocket1(clientSocket);
     if (roomMap.find(nameOfGame) == roomMap.end()){
         pthread_mutex_lock(&lock);
@@ -27,7 +28,15 @@ vector<string> GamesHandler::list(int clientSocket) {
     vector <string> listOfGame;
     map <string, GameRoom*>::iterator iter;
     for (iter = roomMap.begin() ; iter != roomMap.end(); iter++){
-        listOfGame.push_back(iter->first);
+        if (iter->second->getCounter() == 1) {
+            listOfGame.push_back(iter->first);
+        }
+    }
+    if (listOfGame.empty()){
+        listOfGame.push_back("no game available");
+    }
+    else {
+        listOfGame.push_back("exit");
     }
     return listOfGame;
 }

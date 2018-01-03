@@ -6,12 +6,14 @@
 #include <iostream>
 #include <vector>
 #include <pthread.h>
+using namespace std;
 
 class Server {
 private:
 
     int port, serverSocket, currentNumOfPlayer;
     pthread_t serverThreadID;
+   /// static vector <pthread_t > thr;
 
 public:
     /***********************************************************************
@@ -39,6 +41,7 @@ public:
     void stop();
     void waitForExit();
     int getNumOfPlayer(){ return currentNumOfPlayer;};
+ ///   static void setThreadVector(pthread_t thread){ Server::thr.push_back(thread);};
 };
 
 

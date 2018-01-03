@@ -70,6 +70,9 @@ char* ServerConnector::getMove() {
     if ( n == -1){
         throw "Error in reading data";
     }
+    else if ( n == 0){
+        throw "Client is disconnected";
+    }
     return temp;
 }
 
@@ -87,6 +90,9 @@ char* ServerConnector::getSign() {
     if ( n == -1){
         throw "Error in reading data";
     }
+    else if ( n == 0){
+        throw "Client is disconnected";
+    }
     return temp;
 }
 
@@ -100,5 +106,23 @@ void ServerConnector::remotePlayerMenu() {
     int n = write(clientSocket, input.c_str(), input.size()+1);
     if (n == -1) {
         cout << "Error writing command";
+    }
+    if (!strcmp(input.c_str(),"list_games")){
+        while (true){
+            char str[MAX_COMMAND_LEN];
+            int check = read(clientSocket, str, sizeof(str));
+            if (check == -1) {
+                cout << "Error reading command";
+            }
+            else if ( check == 0){
+                throw "Client is disconnected";
+            }
+            else if (!strcmp(str, "exit")){
+                connectToServer();
+            }
+            else{
+                cout << str << endl;
+            }
+        }
     }
 }

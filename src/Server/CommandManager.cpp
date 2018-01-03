@@ -13,7 +13,8 @@ pthread_mutex_t CommandManager::lock;
 
 
 CommandManager::CommandManager() {
-    commandMap["start"] = new StartCommand();
+    master = new GamesHandler();
+    commandMap["start"] = new StartCommand;
     commandMap["join"] = new JoinCommand();
     commandMap["list_games"] = new ListCommand();
     commandMap["close"] = new CloseCommand();

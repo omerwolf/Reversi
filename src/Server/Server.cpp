@@ -78,6 +78,7 @@ static void* clientAccept(void *socket) {
         cout << "Client connected" << endl;
         pthread_t threadId;
         int rc = pthread_create(&threadId, NULL, &handleOneClient, (void*) clientSocket);
+        ///Server::setThreadVector(threadId);
         if (rc){
             cout << "Error: unable to create thread " << rc << endl;
             return NULL;
@@ -94,18 +95,23 @@ static void* handleOneClient(void* socket) {
         close(clientSocket);
         return NULL;
     }
+    else if ( check == 0){
+        close(clientSocket);
+        cout << "Client is disconnected";
+        return NULL;
+    }
     string str(buffer);
     istringstream iss(str);
     string command;
     string nameOfGame;
     iss >> command;
     //command check
-    if (command != "start" && "list_games" && "join" && "play" && "close") {
+    if (command != "start" && (command != "list_games") && (command != "join") && (command != "close")) {
         cout << "Error matching command";
         close(clientSocket);
         return NULL;
     } else {
-        if (command == "start" && "join" && "play" && "close") {
+        if ((command == "start") || (command == "join") || (command == "close")) {
             iss >> nameOfGame;
         } else {
             nameOfGame = "default";
@@ -116,7 +122,9 @@ static void* handleOneClient(void* socket) {
 
 
 void Server::stop() {
-    ///close all threadId games
+    /*for (int i = 0; i< thr.size(); i++){
+        pthread_cancel(thr[i]);
+    }*/
     pthread_cancel(serverThreadID);
     close(serverSocket);
 }
