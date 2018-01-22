@@ -95,7 +95,7 @@ char* ServerConnector::getSign() {
         throw "Error in reading data";
     }
     else if ( n == 0){
-        throw "Client is disconnected";
+        throw "Room alread exist, Client is disconnected";
     }
     return temp;
 }
@@ -104,7 +104,7 @@ int ServerConnector::remotePlayerMenu() {
     string input ;
     cout << "Choose Option:" << endl;
     cout << "   Host new game            , enter: start<name>" << endl;
-    cout << "   See list of current games, enter: list_game" << endl;
+    cout << "   See list of current games, enter: list_games" << endl;
     cout << "   Join to game             , enter: join<name>" << endl;
     getline(cin, input);
     int n = write(clientSocket, input.c_str(), input.size()+1);
