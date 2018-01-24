@@ -16,11 +16,16 @@ using namespace std;
 #define NUMOFPLAYER 10
 #define MAXSIZECOMMAND 50
 
-static void* handleOneClient(void* socket);
-static void* clientAccept(void* socket);
+static void* handleOneClient(void* pack);
+static void* clientAccept(void* pack);
 
+typedef struct package{
+    Server* server;
+    int newClientSocket;
+} Package;
 
-Server::Server(int port): port(port), serverSocket(0), serverThreadID(0){
+Server::Server(int port): port(port), serverSocket(0),
+                          serverThreadID(0), pool(NUMOFTHREADS){
 }
 
 void Server::start() {
@@ -43,8 +48,10 @@ void Server::start() {
         close(serverSocket);
         throw "Error on listening";
     };
-    currentNumOfPlayer = 0;
-    int rc = pthread_create(&serverThreadID, NULL, &clientAccept, (void*)serverSocket);
+    Package* pack = new Package;
+    pack->server = this;
+    pack->newClientSocket = serverSocket;
+    int rc = pthread_create(&serverThreadID, NULL, &clientAccept, (void*)pack);
     if (rc){
         cout << "Error: unable to create thread " << rc << endl;
         pthread_exit(NULL);
@@ -62,32 +69,27 @@ void Server::waitForExit() {
     }
 }
 
-static void* clientAccept(void *socket) {
-    long serverSocket = (long) socket;
-    // Define the client socket's structures
-    struct sockaddr_in clientAddress;
-    socklen_t clientAdderssLen =0;
-    while (true) {
-        cout << "Waiting for client connections..." << endl;
-        // Accept a new client connection
-        int clientSocket = accept(serverSocket, (struct sockaddr *) &clientAddress, &clientAdderssLen);
-        if (clientSocket == -1) {
-            cout << "Error on accept socket1";
-            return NULL;
-        }
-        cout << "Client connected" << endl;
-        pthread_t threadId;
-        int rc = pthread_create(&threadId, NULL, &handleOneClient, (void*) clientSocket);
-        if (rc){
-            cout << "Error: unable to create thread " << rc << endl;
-            return NULL;
-        }
-        pthread_detach(pthread_self());
-    }
+static void* clientAccept(void *pack) {
+    Package* package = (Package*) pack;
+    return package->server->acceptClient(pack);
 }
 
-static void* handleOneClient(void* socket) {
-    long clientSocket = (long) socket;
+static void* handleOneClient(void* pack) {
+    Package* package = (Package*) pack;
+    return package->server->handleClient(pack);
+}
+
+
+void Server::stop() {
+    pthread_cancel(serverThreadID);
+    pthread_join(serverThreadID, NULL);
+    close(serverSocket);
+
+}
+
+void* Server::handleClient(void* pack){
+    Package* package = (Package*) pack;
+    long clientSocket = (long) package->newClientSocket;
     char buffer[MAXSIZECOMMAND];
     int check = read(clientSocket, buffer, sizeof(buffer));
     if (check == -1) {
@@ -121,9 +123,23 @@ static void* handleOneClient(void* socket) {
 }
 
 
-void Server::stop() {
-    pthread_cancel(serverThreadID);
-    pthread_join(serverThreadID, NULL);
-    close(serverSocket);
+void* Server::acceptClient(void* pack){
+    Package* package = (Package*) pack;
+    long serverSocket = (long) package->newClientSocket;
+    // Define the client socket's structures
+    struct sockaddr_in clientAddress;
+    socklen_t clientAdderssLen =0;
+    while (true) {
+        cout << "Waiting for client connections..." << endl;
+        // Accept a new client connection
+        int clientSocket = accept(serverSocket, (struct sockaddr *) &clientAddress, &clientAdderssLen);
+        if (clientSocket == -1) {
+            cout << "Error on accept socket1";
+            return NULL;
+        }
+        cout << "Client connected" << endl;
+        package->newClientSocket = clientSocket;
+        Task* task = new Task(handleOneClient, pack);
+        pool.addTask(task);
+    }
 }
-

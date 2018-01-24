@@ -3,9 +3,13 @@
 ***********************************************************************/
 #ifndef EX3_SERVER_H
 #define EX3_SERVER_H
+#define NUMOFTASK 10
+#define NUMOFTHREADS 5
 #include <iostream>
 #include <vector>
 #include <pthread.h>
+#include "ThreadPool.h"
+#include "Task.h"
 using namespace std;
 
 class Server {
@@ -13,6 +17,8 @@ private:
 
     int port, serverSocket, currentNumOfPlayer;
     pthread_t serverThreadID;
+    ThreadPool pool;
+    Task* tasks[NUMOFTASK];
    /// static vector <pthread_t > thr;
 
 public:
@@ -54,8 +60,9 @@ public:
     * The Function operation: Set the private member currentNumOfPlayer    *
     ***********************************************************************/
     int getNumOfPlayer(){ return currentNumOfPlayer;};
- ///   static void setThreadVector(pthread_t thread){ Server::thr.push_back(thread);};
+    void* handleClient(void* pack);
+    void* acceptClient(void* pack);
+    ///   static void setThreadVector(pthread_t thread){ Server::thr.push_back(thread);};
 };
-
 
 #endif //EX3_SERVER_H

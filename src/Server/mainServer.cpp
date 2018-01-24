@@ -1,3 +1,4 @@
+
 /***********************************************************************
 * Name : Yoel Jasner & Omer Wolf									   *
 ***********************************************************************/
@@ -19,12 +20,13 @@ int main() {
         cout << "Unable to open the server/ip file" << endl;
         return -1;
     }
-    Server server(port);
+    Server* server = new Server(port);
     try {
-        server.start();
+        server->start();
     } catch (const char *msg) {
         cout << "Cannot start server. Reason: " << msg << endl;
-        server.stop();
+        server->stop();
+        delete server;
         return 0;
     }
 }

@@ -6,7 +6,7 @@
 #define NUMOFTHREADS 5
 
 ThreadPool::ThreadPool(int threaNum) :stopped (false) {
-    threads = new pthread_t(NUMOFTHREADS);
+    threads = new pthread_t[NUMOFTHREADS];
     for (int i=0;i<NUMOFTHREADS;++i){
         pthread_create(threads+i, NULL, excute, this);
     }
