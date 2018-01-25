@@ -26,6 +26,7 @@ typedef struct package{
 
 Server::Server(int port): port(port), serverSocket(0),
                           serverThreadID(0), pool(NUMOFTHREADS){
+
 }
 
 void Server::start() {
@@ -84,7 +85,7 @@ void Server::stop() {
     pthread_cancel(serverThreadID);
     pthread_join(serverThreadID, NULL);
     close(serverSocket);
-
+    pool.terminate();
 }
 
 void* Server::handleClient(void* pack){

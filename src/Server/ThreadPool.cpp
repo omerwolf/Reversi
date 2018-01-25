@@ -30,6 +30,7 @@ void ThreadPool::executeTask() {
             tasksQueue.pop();
             pthread_mutex_unlock(&lock);
             task->excute();
+            delete task;
         }
         else{
             pthread_mutex_unlock(&lock);

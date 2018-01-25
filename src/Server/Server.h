@@ -18,7 +18,6 @@ private:
     int port, serverSocket, currentNumOfPlayer;
     pthread_t serverThreadID;
     ThreadPool pool;
-    Task* tasks[NUMOFTASK];
    /// static vector <pthread_t > thr;
 
 public:
