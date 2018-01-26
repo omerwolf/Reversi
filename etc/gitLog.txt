@@ -1,3 +1,28 @@
+commit d5c270314df74bda32966857bfcf442796de693e
+Author: omer <omer2wolf@gmail.com>
+Date:   Fri Jan 26 13:16:42 2018 +0200
+
+    write comments
+
+commit 95b14564545ce44cc0944862726ec09c6ead002d
+Author: yoel <yjasner@gmail.com>
+Date:   Fri Jan 26 01:43:43 2018 +0200
+
+    ex7 done with memory leak check.
+
+commit b868c7a2c63606cb3cb9e554b3dded9d5739ff2c
+Author: yoel <yjasner@gmail.com>
+Date:   Wed Jan 24 23:36:16 2018 +0200
+
+    ex7 done
+
+commit d5765ad56e3c86c9e376cb4dbe4edeb0e887f6f9
+Author: yoel <yjasner@gmail.com>
+Date:   Mon Jan 22 21:55:49 2018 +0200
+
+    ex5
+:
+
 commit fa7bfccedd8d6a9d50b2ae78e9b68b862c8ca848
 Author: yoel <yjasner@gmail.com>
 Date:   Wed Jan 3 21:42:28 2018 +0200
